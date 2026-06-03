@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-categories-response-model-structure.json",
+  "name": "GetCategoriesResponseModel",
+  "description": "GetCategoriesResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "nextPage": {
+      "type": "string",
+      "description": "Unique key for the next page of results",
+      "example": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "categoryType": {
+            "type": "string",
+            "description": "Type of category (Food, Beer, Wine, Liquor, N/A Bev, Retail, Other, Labor, or a custom category type)",
+            "example": "Food"
+          },
+          "accountingCode": {
+            "type": "double",
+            "description": "Account code for the category in the integrated accounting system",
+            "example": 5010
+          },
+          "categoryName": {
+            "type": "string",
+            "description": "Name of the category in MarginEdge",
+            "example": "Sample Category"
+          },
+          "categoryId": {
+            "type": "string",
+            "description": "Identifier of the category in MarginEdge",
+            "example": "me-category-9f3a2b"
+          }
+        }
+      }
+    }
+  }
+}

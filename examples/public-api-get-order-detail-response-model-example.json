@@ -1,0 +1,37 @@
+{
+  "deliveryCharges": 44,
+  "attachments": [
+    {
+      "attachmentUrl": "example",
+      "attachmentId": 42781
+    }
+  ],
+  "orderId": "me-order-9f3a2b",
+  "otherCharges": 45,
+  "vendorId": "me-vendor-9f3a2b",
+  "tax": 90,
+  "vendorName": "Sample vendorName",
+  "customerNumber": "INV-100245",
+  "invoiceDate": "2026-05-15",
+  "orderTotal": 31.82,
+  "lineItems": [
+    {
+      "unitPrice": 455.49,
+      "vendorItemCode": "example",
+      "quantity": 3,
+      "linePrice": 261.95,
+      "vendorItemName": "Sample vendorItemName",
+      "companyConceptProductId": "me-companyconceptproduct-9f3a2b",
+      "categoryId": "me-category-9f3a2b",
+      "packagingId": "me-packaging-9f3a2b"
+    }
+  ],
+  "isCredit": true,
+  "createdDate": "2026-05-15",
+  "inputTaxCredits": 27,
+  "invoiceNumber": "INV-100245",
+  "creditAmount": 446.52,
+  "paymentAccount": "example",
+  "otherDescription": "example",
+  "status": "PROCESSED"
+}

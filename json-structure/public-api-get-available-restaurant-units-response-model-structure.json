@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-available-restaurant-units-response-model-structure.json",
+  "name": "GetAvailableRestaurantUnitsResponseModel",
+  "description": "GetAvailableRestaurantUnitsResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "restaurants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the restaurant in MarginEdge",
+            "example": "Sample Name"
+          },
+          "id": {
+            "type": "double",
+            "description": "Unique identifier of this restaurant that will be used in the request to all other API endpoints",
+            "example": 12345
+          }
+        }
+      }
+    }
+  }
+}

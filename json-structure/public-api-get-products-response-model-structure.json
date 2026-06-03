@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-products-response-model-structure.json",
+  "name": "GetProductsResponseModel",
+  "description": "GetProductsResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "nextPage": {
+      "type": "string",
+      "description": "Unique key for the next page of results",
+      "example": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "centralProductId": {
+            "type": "string",
+            "description": "Identifier of the product across all restaurants in MarginEdge, if applicable. Not all products have a central identifier.",
+            "example": "me-centralproduct-9f3a2b"
+          },
+          "latestPrice": {
+            "type": "double",
+            "description": "Most recent price of this product based on purchasing data",
+            "example": 42.75
+          },
+          "reportByUnit": {
+            "type": "string",
+            "description": "Unit that this product is reported by in MarginEdge (e.g., EACH, POUND)",
+            "example": "case"
+          },
+          "taxExempt": {
+            "type": "boolean",
+            "description": "Indicates whether this product is marked tax exempt",
+            "example": true
+          },
+          "companyConceptProductId": {
+            "type": "string",
+            "description": "Identifier of the product unique within the company concept this restaurant belongs to",
+            "example": "me-companyconceptproduct-9f3a2b"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "percentAllocation": {
+                  "type": "double",
+                  "description": "Percent allocation of the product to this category",
+                  "example": 1
+                },
+                "categoryId": {
+                  "type": "string",
+                  "description": "Identifier of a category to which this product belongs",
+                  "example": "me-category-9f3a2b"
+                }
+              }
+            }
+          },
+          "productName": {
+            "type": "string",
+            "description": "Name of the product",
+            "example": "Sample Product"
+          },
+          "itemCount": {
+            "type": "double",
+            "description": "Number of vendor items assigned to this product (in this restaurant)",
+            "example": 3
+          }
+        }
+      }
+    }
+  }
+}

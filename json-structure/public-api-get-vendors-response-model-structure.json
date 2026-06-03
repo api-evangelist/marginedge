@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-vendors-response-model-structure.json",
+  "name": "GetVendorsResponseModel",
+  "description": "GetVendorsResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "nextPage": {
+      "type": "string",
+      "description": "Unique key for the next page of results",
+      "example": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+    },
+    "vendors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vendorId": {
+            "type": "string",
+            "description": "Unique identifier of the vendor within this restaurant unit",
+            "example": "me-vendor-9f3a2b"
+          },
+          "vendorName": {
+            "type": "string",
+            "description": "Name of the vendor in MarginEdge",
+            "example": "Sample Vendor"
+          },
+          "centralVendorId": {
+            "type": "string",
+            "description": "Unique identifier of the vendor centrally (across all restaurant units in MarginEdge)",
+            "example": "me-centralvendor-9f3a2b"
+          },
+          "vendorAccounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "vendorAccountNumber": {
+                  "type": "string",
+                  "description": "The vendor\u2019s account number for this restaurant",
+                  "example": "INV-100245"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

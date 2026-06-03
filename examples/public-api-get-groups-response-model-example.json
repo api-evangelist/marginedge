@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "companyId": 65990,
+      "conceptName": "Sample conceptName",
+      "lastModifiedDate": "2026-05-15",
+      "companyName": "Sample companyName",
+      "name": "Riverside Bistro",
+      "groupCategoryName": "Sample groupCategoryName",
+      "conceptId": 21009,
+      "id": "me--9f3a2b",
+      "groupCategoryId": "me-groupcategory-9f3a2b",
+      "units": [
+        {}
+      ]
+    }
+  ]
+}

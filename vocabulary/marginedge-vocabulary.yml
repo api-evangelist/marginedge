@@ -1,0 +1,286 @@
+vocabulary: 1.0.0
+info:
+  provider: MarginEdge
+  description: Unified operational (OpenAPI) and capability (Naftiko) vocabulary for the MarginEdge Public API, covering invoice/order,
+    product, vendor, category, and restaurant-unit retrieval.
+  created: '2026-06-02'
+  modified: '2026-06-02'
+operational:
+  apis:
+  - name: MarginEdge Public API
+    namespace: marginedge-public
+    version: 1.0.0
+    baseUrl: https://api.marginedge.com/public
+    status: active
+  resources:
+  - name: Categories
+    api: MarginEdge Public API
+    actions:
+    - getCategories
+  - name: Orders
+    api: MarginEdge Public API
+    actions:
+    - getOrders
+    - getOrderDetail
+  - name: Products
+    api: MarginEdge Public API
+    actions:
+    - getProducts
+  - name: Restaurant Units
+    api: MarginEdge Public API
+    actions:
+    - getRestaurantUnits
+    - getRestaurantUnitGroupCategories
+    - getRestaurantUnitGroups
+  - name: Vendors
+    api: MarginEdge Public API
+    actions:
+    - getVendors
+    - getVendorItems
+    - getVendorItemsPackaging
+  actions:
+  - verb: get
+    httpMethod: GET
+    pattern: read
+  - verb: list
+    httpMethod: GET
+    pattern: query
+  schemas:
+    core:
+    - name: GetAvailableRestaurantUnitsResponseModel
+      properties:
+      - restaurants
+    - name: GetCategoriesResponseModel
+      properties:
+      - nextPage
+      - categories
+    - name: GetGroupCategoriesResponseModel
+      properties:
+      - groupCategories
+    - name: GetGroupsResponseModel
+      properties:
+      - groups
+    - name: GetOrderDetailResponseModel
+      properties:
+      - deliveryCharges
+      - attachments
+      - orderId
+      - otherCharges
+      - vendorId
+      - tax
+    - name: GetOrdersResponseModel
+      properties:
+      - nextPage
+      - orders
+    - name: GetProductsResponseModel
+      properties:
+      - nextPage
+      - products
+    - name: GetVendorItemsPackagingResponseModel
+      properties:
+      - packagings
+      - nextPage
+    - name: GetVendorItemsResponseModel
+      properties:
+      - vendorItems
+      - nextPage
+    - name: GetVendorsResponseModel
+      properties:
+      - nextPage
+      - vendors
+  parameters:
+    pagination:
+    - nextPage
+    identifiers:
+    - restaurantUnitId
+    - vendorId
+    - orderId
+    - vendorItemCode
+    - conceptId
+    - companyId
+    filters:
+    - startDate
+    - endDate
+    - orderStatus
+    headers:
+    - x-api-key
+  enums:
+    orderStatus:
+    - PROCESSED
+    categoryType:
+    - Food
+    - Beer
+    - Wine
+    - Liquor
+    - N/A Bev
+    - Retail
+    - Other
+    - Labor
+  authentication:
+    scheme: apiKey
+    in: header
+    name: x-api-key
+    note: API key scoped to the MarginEdge restaurants the caller is authorized to access
+capability:
+  workflows:
+  - name: MarginEdge Public API — Categories
+    file: capabilities/marginedge-categories.yaml
+    description: 'Categories surface of the MarginEdge Public API. 1 operation(s). Lead operation: MarginEdge Get Categories.
+      Self-contain'
+    apis:
+    - MarginEdge Public API
+    toolCount: 1
+    personas:
+    - multi-unit-operator
+    - accounting-group
+    - bi-provider
+    domains:
+    - Categories
+  - name: MarginEdge Public API — Orders
+    file: capabilities/marginedge-orders.yaml
+    description: 'Orders surface of the MarginEdge Public API. 2 operation(s). Lead operation: MarginEdge Get Orders. Self-contained
+      Nafti'
+    apis:
+    - MarginEdge Public API
+    toolCount: 2
+    personas:
+    - multi-unit-operator
+    - accounting-group
+    - bi-provider
+    domains:
+    - Orders
+  - name: MarginEdge Public API — Products
+    file: capabilities/marginedge-products.yaml
+    description: 'Products surface of the MarginEdge Public API. 1 operation(s). Lead operation: MarginEdge Get Products.
+      Self-contained N'
+    apis:
+    - MarginEdge Public API
+    toolCount: 1
+    personas:
+    - multi-unit-operator
+    - accounting-group
+    - bi-provider
+    domains:
+    - Products
+  - name: MarginEdge Public API — Restaurant Units
+    file: capabilities/marginedge-restaurant-units.yaml
+    description: 'Restaurant Units surface of the MarginEdge Public API. 3 operation(s). Lead operation: MarginEdge Get Restaurant
+      Units. '
+    apis:
+    - MarginEdge Public API
+    toolCount: 3
+    personas:
+    - multi-unit-operator
+    - accounting-group
+    - bi-provider
+    domains:
+    - Restaurant Units
+  - name: MarginEdge Public API — Vendors
+    file: capabilities/marginedge-vendors.yaml
+    description: 'Vendors surface of the MarginEdge Public API. 3 operation(s). Lead operation: MarginEdge Get Vendors. Self-contained
+      Naf'
+    apis:
+    - MarginEdge Public API
+    toolCount: 3
+    personas:
+    - multi-unit-operator
+    - accounting-group
+    - bi-provider
+    domains:
+    - Vendors
+  personas:
+  - id: multi-unit-operator
+    name: Multi-Unit Operator
+    description: Builds custom reporting across many restaurant locations
+  - id: accounting-group
+    name: Accounting Group
+    description: Pulls invoice and vendor data into the accounting system
+  - id: bi-provider
+    name: Business Intelligence Provider
+    description: Delivers analytics to MarginEdge customers
+  domains:
+  - Orders
+  - Products
+  - Vendors
+  - Categories
+  - Restaurant Units
+  namespaces:
+  - consumed: marginedge-categories
+    rest: marginedge-categories-rest
+    mcp: marginedge-categories-mcp
+    restPort: 8080
+    mcpPort: 9090
+  - consumed: marginedge-orders
+    rest: marginedge-orders-rest
+    mcp: marginedge-orders-mcp
+    restPort: 8080
+    mcpPort: 9090
+  - consumed: marginedge-products
+    rest: marginedge-products-rest
+    mcp: marginedge-products-mcp
+    restPort: 8080
+    mcpPort: 9090
+  - consumed: marginedge-restaurant-units
+    rest: marginedge-restaurant-units-rest
+    mcp: marginedge-restaurant-units-mcp
+    restPort: 8080
+    mcpPort: 9090
+  - consumed: marginedge-vendors
+    rest: marginedge-vendors-rest
+    mcp: marginedge-vendors-mcp
+    restPort: 8080
+    mcpPort: 9090
+  binds:
+  - env: MARGINEDGE_API_KEY
+    description: API key for the MarginEdge Public API
+crossReference:
+- resource: Categories
+  operations:
+  - getCategories
+  workflows:
+  - MarginEdge Public API — Categories
+  personas:
+  - multi-unit-operator
+  - accounting-group
+  - bi-provider
+- resource: Orders
+  operations:
+  - getOrders
+  - getOrderDetail
+  workflows:
+  - MarginEdge Public API — Orders
+  personas:
+  - multi-unit-operator
+  - accounting-group
+  - bi-provider
+- resource: Products
+  operations:
+  - getProducts
+  workflows:
+  - MarginEdge Public API — Products
+  personas:
+  - multi-unit-operator
+  - accounting-group
+  - bi-provider
+- resource: Restaurant Units
+  operations:
+  - getRestaurantUnits
+  - getRestaurantUnitGroupCategories
+  - getRestaurantUnitGroups
+  workflows:
+  - MarginEdge Public API — Restaurant Units
+  personas:
+  - multi-unit-operator
+  - accounting-group
+  - bi-provider
+- resource: Vendors
+  operations:
+  - getVendors
+  - getVendorItems
+  - getVendorItemsPackaging
+  workflows:
+  - MarginEdge Public API — Vendors
+  personas:
+  - multi-unit-operator
+  - accounting-group
+  - bi-provider

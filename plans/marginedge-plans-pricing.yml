@@ -1,0 +1,153 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: MarginEdge
+providerId: marginedge
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: true
+tags:
+  - Restaurant
+  - Back Office
+  - Subscription
+  - Invoices
+  - Accounting
+description: >-
+  MarginEdge prices as an all-inclusive per-location monthly subscription with no
+  contracts and unlimited invoice processing and bill pay (U.S. only). The base
+  MarginEdge plan is $350 per location per month, and the MarginEdge + Freepour
+  bundle (adding the Freepour smart-scale liquor inventory hardware) is $500 per
+  location per month. Both plans offer a 10% discount when billed annually ($420/year
+  savings on the base plan, $600/year on the bundle). The MarginEdge Public API for
+  retrieving invoice and product data is included at no extra cost with any
+  subscription. Toast POS customers incur an additional $50 per location per month
+  for Toast's Restaurant Management Suite subscription.
+sources:
+  - https://www.marginedge.com/pricing/
+  - https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+plans:
+  - id: marginedge-marginedge
+    name: MarginEdge
+    type: subscription
+    description: >-
+      All-inclusive restaurant back-office platform billed per location, including the
+      Public API for invoice and product data retrieval at no extra cost.
+    entries:
+      - label: Per-Location Subscription (Monthly)
+        name: per_location_subscription_monthly
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '$350 per location per month'
+        userMultiplied: false
+      - label: Per-Location Subscription (Annual, 10% off)
+        name: per_location_subscription_annual
+        type: subscription
+        metric: year
+        limit: 1
+        timeFrame: year
+        geo: US
+        unit: 1
+        price: '$350 per location per month, billed annually with 10% discount ($420/year savings)'
+        userMultiplied: false
+      - label: Invoice Processing
+        name: invoice_processing
+        type: quota
+        metric: invoice
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: Bill Pay (U.S. only)
+        name: bill_pay
+        type: quota
+        metric: payment
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+      - label: Public API Access
+        name: public_api_access
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'included'
+        userMultiplied: false
+    elements:
+      - name: Product Price Monitoring and Alerts
+      - name: Inventory Tools
+      - name: Recipe Management with Menu Analysis
+      - name: Vendor Statement Reconciliation
+      - name: Unlimited Bill Pay (U.S. only)
+      - name: Unlimited Invoice Processing
+      - name: POS Integrations
+      - name: Daily Controllable P&L with Labor Tracking
+      - name: Sales Reporting
+      - name: Budget Tracking
+      - name: Accounting Integrations
+      - name: Public API for Invoice and Product Data
+      - name: Unlimited Email Support
+      - name: 1:1 Software Training
+      - name: No Contracts
+  - id: marginedge-marginedge-freepour
+    name: MarginEdge + Freepour
+    type: subscription
+    description: >-
+      The full MarginEdge platform plus the Freepour smart-scale liquor inventory
+      hardware for precise liquor counts.
+    entries:
+      - label: Per-Location Subscription (Monthly)
+        name: per_location_subscription_monthly
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '$500 per location per month'
+        userMultiplied: false
+      - label: Per-Location Subscription (Annual, 10% off)
+        name: per_location_subscription_annual
+        type: subscription
+        metric: year
+        limit: 1
+        timeFrame: year
+        geo: US
+        unit: 1
+        price: '$500 per location per month, billed annually with 10% discount ($600/year savings)'
+        userMultiplied: false
+    elements:
+      - name: All MarginEdge Plan Features
+      - name: Freepour Smart Scale for Liquor Inventory
+      - name: Precise Liquor Counts
+      - name: Team Accountability Features
+      - name: Fast Inventory Capabilities
+  - id: marginedge-toast-add-on
+    name: Toast Restaurant Management Suite Add-On
+    type: subscription
+    description: >-
+      Additional fee for Toast POS customers, billed by Toast for the Restaurant
+      Management Suite subscription that enables the MarginEdge integration.
+    entries:
+      - label: Toast Restaurant Management Suite
+        name: toast_rms_add_on
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '$50 per location per month (billed by Toast)'
+        userMultiplied: false
+    elements:
+      - name: Toast POS Integration via Restaurant Management Suite

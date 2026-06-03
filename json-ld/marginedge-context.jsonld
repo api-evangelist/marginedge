@@ -1,0 +1,300 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "me": "https://schema.marginedge.com/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GetAvailableRestaurantUnitsResponseModel": "me:GetAvailableRestaurantUnitsResponseModel",
+    "GetCategoriesResponseModel": "me:GetCategoriesResponseModel",
+    "GetGroupCategoriesResponseModel": "me:GetGroupCategoriesResponseModel",
+    "GetGroupsResponseModel": "me:GetGroupsResponseModel",
+    "GetOrderDetailResponseModel": "me:GetOrderDetailResponseModel",
+    "GetOrdersResponseModel": "me:GetOrdersResponseModel",
+    "GetProductsResponseModel": "me:GetProductsResponseModel",
+    "GetVendorItemsPackagingResponseModel": "me:GetVendorItemsPackagingResponseModel",
+    "GetVendorItemsResponseModel": "me:GetVendorItemsResponseModel",
+    "GetVendorsResponseModel": "me:GetVendorsResponseModel",
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "me:id",
+      "@type": "xsd:decimal"
+    },
+    "restaurants": {
+      "@id": "me:restaurants",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "nextPage": {
+      "@id": "me:nextPage",
+      "@type": "xsd:string"
+    },
+    "categoryType": {
+      "@id": "me:categoryType",
+      "@type": "xsd:string"
+    },
+    "accountingCode": {
+      "@id": "me:accountingCode",
+      "@type": "xsd:decimal"
+    },
+    "categoryName": {
+      "@id": "me:categoryName",
+      "@type": "xsd:string"
+    },
+    "categoryId": {
+      "@id": "me:categoryId",
+      "@type": "xsd:string"
+    },
+    "categories": {
+      "@id": "me:categories",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "companyId": {
+      "@id": "me:companyId",
+      "@type": "xsd:decimal"
+    },
+    "conceptName": {
+      "@id": "me:conceptName",
+      "@type": "xsd:string"
+    },
+    "companyName": {
+      "@id": "me:companyName",
+      "@type": "xsd:string"
+    },
+    "conceptId": {
+      "@id": "me:conceptId",
+      "@type": "xsd:decimal"
+    },
+    "permission": {
+      "@id": "me:permission",
+      "@type": "xsd:string"
+    },
+    "groupCategories": {
+      "@id": "me:groupCategories",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "lastModifiedDate": {
+      "@id": "me:lastModifiedDate",
+      "@type": "xsd:string"
+    },
+    "groupCategoryName": {
+      "@id": "me:groupCategoryName",
+      "@type": "xsd:string"
+    },
+    "groupCategoryId": {
+      "@id": "me:groupCategoryId",
+      "@type": "xsd:string"
+    },
+    "unitName": {
+      "@id": "me:unitName",
+      "@type": "xsd:string"
+    },
+    "unitId": {
+      "@id": "me:unitId",
+      "@type": "xsd:decimal"
+    },
+    "units": {
+      "@id": "me:units",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "groups": {
+      "@id": "me:groups",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "deliveryCharges": {
+      "@id": "me:deliveryCharges",
+      "@type": "xsd:decimal"
+    },
+    "attachmentUrl": {
+      "@id": "me:attachmentUrl",
+      "@type": "xsd:string"
+    },
+    "attachmentId": {
+      "@id": "me:attachmentId",
+      "@type": "xsd:decimal"
+    },
+    "attachments": {
+      "@id": "me:attachments",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "orderId": {
+      "@id": "me:orderId",
+      "@type": "xsd:string"
+    },
+    "otherCharges": {
+      "@id": "me:otherCharges",
+      "@type": "xsd:decimal"
+    },
+    "vendorId": {
+      "@id": "me:vendorId",
+      "@type": "xsd:string"
+    },
+    "tax": {
+      "@id": "me:tax",
+      "@type": "xsd:decimal"
+    },
+    "vendorName": {
+      "@id": "me:vendorName",
+      "@type": "xsd:string"
+    },
+    "customerNumber": {
+      "@id": "me:customerNumber",
+      "@type": "xsd:string"
+    },
+    "invoiceDate": {
+      "@id": "me:invoiceDate",
+      "@type": "xsd:string"
+    },
+    "orderTotal": {
+      "@id": "me:orderTotal",
+      "@type": "xsd:decimal"
+    },
+    "unitPrice": {
+      "@id": "me:unitPrice",
+      "@type": "xsd:decimal"
+    },
+    "vendorItemCode": {
+      "@id": "me:vendorItemCode",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "me:quantity",
+      "@type": "xsd:decimal"
+    },
+    "linePrice": {
+      "@id": "me:linePrice",
+      "@type": "xsd:decimal"
+    },
+    "vendorItemName": {
+      "@id": "me:vendorItemName",
+      "@type": "xsd:string"
+    },
+    "companyConceptProductId": {
+      "@id": "me:companyConceptProductId",
+      "@type": "xsd:string"
+    },
+    "packagingId": {
+      "@id": "me:packagingId",
+      "@type": "xsd:string"
+    },
+    "lineItems": {
+      "@id": "me:lineItems",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "isCredit": {
+      "@id": "me:isCredit",
+      "@type": "xsd:boolean"
+    },
+    "createdDate": {
+      "@id": "me:createdDate",
+      "@type": "xsd:string"
+    },
+    "inputTaxCredits": {
+      "@id": "me:inputTaxCredits",
+      "@type": "xsd:decimal"
+    },
+    "invoiceNumber": {
+      "@id": "me:invoiceNumber",
+      "@type": "xsd:string"
+    },
+    "creditAmount": {
+      "@id": "me:creditAmount",
+      "@type": "xsd:decimal"
+    },
+    "paymentAccount": {
+      "@id": "me:paymentAccount",
+      "@type": "xsd:string"
+    },
+    "otherDescription": {
+      "@id": "me:otherDescription",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "me:status",
+      "@type": "xsd:string"
+    },
+    "orders": {
+      "@id": "me:orders",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "centralProductId": {
+      "@id": "me:centralProductId",
+      "@type": "xsd:string"
+    },
+    "latestPrice": {
+      "@id": "me:latestPrice",
+      "@type": "xsd:decimal"
+    },
+    "reportByUnit": {
+      "@id": "me:reportByUnit",
+      "@type": "xsd:string"
+    },
+    "taxExempt": {
+      "@id": "me:taxExempt",
+      "@type": "xsd:boolean"
+    },
+    "productName": {
+      "@id": "me:productName",
+      "@type": "xsd:string"
+    },
+    "itemCount": {
+      "@id": "me:itemCount",
+      "@type": "xsd:decimal"
+    },
+    "products": {
+      "@id": "me:products",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "unit": {
+      "@id": "me:unit",
+      "@type": "xsd:string"
+    },
+    "packagingName": {
+      "@id": "me:packagingName",
+      "@type": "xsd:string"
+    },
+    "packagings": {
+      "@id": "me:packagings",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "centralVendorItemId": {
+      "@id": "me:centralVendorItemId",
+      "@type": "xsd:string"
+    },
+    "centralVendorId": {
+      "@id": "me:centralVendorId",
+      "@type": "xsd:string"
+    },
+    "vendorItems": {
+      "@id": "me:vendorItems",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "vendorAccountNumber": {
+      "@id": "me:vendorAccountNumber",
+      "@type": "xsd:string"
+    },
+    "vendorAccounts": {
+      "@id": "me:vendorAccounts",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "vendors": {
+      "@id": "me:vendors",
+      "@container": "@set",
+      "@type": "@id"
+    }
+  }
+}

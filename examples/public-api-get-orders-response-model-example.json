@@ -1,0 +1,17 @@
+{
+  "nextPage": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+  "orders": [
+    {
+      "createdDate": "2026-05-15",
+      "orderId": "me-order-9f3a2b",
+      "invoiceNumber": "INV-100245",
+      "vendorId": "me-vendor-9f3a2b",
+      "vendorName": "Sample vendorName",
+      "customerNumber": "INV-100245",
+      "invoiceDate": "2026-05-15",
+      "paymentAccount": "example",
+      "orderTotal": 95.98,
+      "status": "PROCESSED"
+    }
+  ]
+}

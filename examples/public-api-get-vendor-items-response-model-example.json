@@ -1,0 +1,14 @@
+{
+  "vendorItems": [
+    {
+      "vendorItemCode": "example",
+      "centralVendorItemId": "me-centralvendoritem-9f3a2b",
+      "vendorId": "me-vendor-9f3a2b",
+      "companyConceptProductId": "me-companyconceptproduct-9f3a2b",
+      "vendorName": "Sample vendorName",
+      "centralVendorId": "me-centralvendor-9f3a2b",
+      "productName": "Sample productName"
+    }
+  ],
+  "nextPage": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+}

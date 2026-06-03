@@ -1,0 +1,66 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: MarginEdge
+providerId: marginedge
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Restaurant
+  - Invoices
+  - Products
+description: >-
+  The MarginEdge Public API is served through an AWS API Gateway fronting a custom
+  authorizer, with access scoped by an API key (the x-api-key header) to the
+  restaurants the caller is authorized to access. MarginEdge does not publish explicit
+  numeric request-rate or quota values in its developer portal, so the per-second and
+  per-day limits below are documented as references to the portal rather than fixed
+  numbers; treat them as gateway-enforced and subject to standard AWS API Gateway
+  throttling. The API is read-only (GET only) and returns large collections through
+  opaque cursor pagination using the nextPage parameter and response field, which is
+  the primary control on response volume. Limits apply per API key.
+sources:
+  - https://developer.marginedge.com/
+  - https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+responseCodes:
+  unauthorized: 403
+  notFound: 404
+  badRequest: 400
+  serverError: 500
+limits:
+  - name: Public API requests (per API key)
+    scope: key
+    metric: requests_per_second
+    limit: 'not publicly published; enforced by AWS API Gateway throttling — see developer.marginedge.com'
+    notes: >-
+      Access is gated by the x-api-key header through a custom AWS API Gateway
+      authorizer. Specific per-second throttle and burst values are not documented in
+      the public developer portal.
+  - name: Collection page size
+    scope: key
+    metric: varies
+    limit: 'server-determined page size; iterate with the nextPage cursor to retrieve all results'
+    notes: >-
+      List endpoints (orders, products, vendors, categories, vendor items) return a
+      bounded page plus a nextPage cursor. Continue requesting with nextPage until it is
+      absent to page through the full result set.
+policies:
+  - name: API key scoping
+    description: >-
+      Each API key is scoped to the specific MarginEdge restaurants the integration is
+      authorized to access; requests for unauthorized restaurants return 403.
+  - name: Cursor pagination
+    description: >-
+      List responses include an opaque nextPage value. Pass it back as the nextPage
+      query parameter to fetch the next page; stop when nextPage is no longer returned.
+  - name: Read-only access
+    description: >-
+      The Public API only supports data retrieval (GET); it cannot create or update data
+      in MarginEdge, which removes write-rate concerns entirely.
+  - name: Exponential backoff on 5xx / throttling
+    description: >-
+      Because exact throttle numbers are not published, clients should implement
+      exponential backoff and retry on 429/503-style throttling and 500 responses, and
+      cache restaurant-unit lookups to minimize request volume.

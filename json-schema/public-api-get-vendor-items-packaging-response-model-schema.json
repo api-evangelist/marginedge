@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-schema/public-api-get-vendor-items-packaging-response-model-schema.json",
+  "title": "GetVendorItemsPackagingResponseModel",
+  "description": "GetVendorItemsPackagingResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "packagings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "description": "Unit this packaging is measured in",
+            "example": "case"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "Quantity of the packaging unit present in this packaging",
+            "example": 3
+          },
+          "packagingName": {
+            "type": "string",
+            "description": "Name of the packaging in MarginEdge",
+            "example": "Sample Packaging"
+          },
+          "packagingId": {
+            "type": "string",
+            "description": "Identifier of the packaging for this vendor item that was purchased",
+            "example": "me-packaging-9f3a2b"
+          }
+        }
+      }
+    },
+    "nextPage": {
+      "type": "string",
+      "description": "Unique key for the next page of results",
+      "example": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+    }
+  }
+}

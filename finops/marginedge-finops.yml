@@ -1,0 +1,101 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: MarginEdge
+providerId: marginedge
+created: '2026-06-02'
+modified: '2026-06-02'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Restaurant
+  - Back Office
+  - Subscription
+description: >-
+  FOCUS-aligned FinOps for MarginEdge: an all-inclusive per-location monthly SaaS
+  subscription ($350/location base, $500/location with Freepour) with no usage-based
+  metering — invoice processing, bill pay, and Public API access are included rather
+  than billed per unit.
+sources:
+  - https://www.marginedge.com/pricing/
+  - https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: MarginEdge, LLC
+serviceCategory: Restaurant Back-Office Management
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly or Annual
+  billingCurrency: USD
+  chargeCategories:
+    - Purchase
+    - Tax
+    - Credit
+focusColumns:
+  ServiceName: MarginEdge
+  ServiceCategory: Restaurant Back-Office Management
+  ProviderName: MarginEdge
+  PublisherName: MarginEdge, LLC
+  InvoiceIssuerName: MarginEdge, LLC
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingUnit: location-month
+meters:
+  - name: location_subscription
+    unit: location-month
+    aggregation: sum
+    dimensions:
+      - plan
+      - billing_frequency
+  - name: freepour_subscription
+    unit: location-month
+    aggregation: sum
+    dimensions:
+      - plan
+  - name: invoice_processing
+    unit: invoice
+    aggregation: count
+    dimensions:
+      - restaurant_unit
+  - name: bill_pay
+    unit: payment
+    aggregation: count
+    dimensions:
+      - restaurant_unit
+      - vendor
+  - name: public_api_requests
+    unit: request
+    aggregation: count
+    dimensions:
+      - restaurant_unit
+      - endpoint
+principles:
+  - name: Visibility
+    description: >-
+      Subscription cost is fully visible as a flat per-location line; operational
+      consumption (invoices processed, bill payments, API pulls) is observable through
+      the MarginEdge app reporting and the Public API's orders, products, and vendors
+      endpoints rather than as separate billed meters.
+  - name: Allocation
+    description: >-
+      Allocate cost per restaurant location using restaurantUnitId — the identifier
+      returned by GET /restaurantUnits and required on most Public API calls — and roll
+      up by concept or company via the restaurant-unit groups and group categories
+      endpoints.
+  - name: Optimization
+    description: >-
+      The primary cost levers are choosing annual billing for a 10% discount, selecting
+      the base plan vs the Freepour bundle per location's liquor-tracking needs, and
+      avoiding the $50/location Toast Restaurant Management Suite surcharge where another
+      supported POS is viable.
+  - name: Accountability
+    description: >-
+      Multi-unit operators own location-level subscription spend; finance and accounting
+      teams reconcile the included invoice-processing and bill-pay activity against the
+      integrated accounting system, with no risk of overage charges since usage is
+      unlimited within the flat subscription.

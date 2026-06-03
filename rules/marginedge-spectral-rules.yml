@@ -1,0 +1,332 @@
+# Spectral ruleset for the MarginEdge Public API
+# Derived from the conventions observed in openapi/marginedge-openapi.yml:
+#   - OpenAPI 3.0.x, single HTTPS server at https://api.marginedge.com/public
+#   - camelCase path segments and query parameters (restaurantUnitId, vendorItemCode, nextPage)
+#   - Read-only surface: every operation is GET; no request bodies
+#   - API-key security via the x-api-key header (apiKey-in-header scheme)
+#   - Cursor pagination using the opaque "nextPage" query parameter / response field
+#   - Operation summaries prefixed with "MarginEdge" and Title Cased
+#   - Tags in Title Case grouping by resource (Orders, Products, Vendors, Categories, Restaurant Units)
+extends:
+  - "spectral:oas"
+rules:
+
+  # ------------------------------------------------------------------
+  # INFO / METADATA
+  # ------------------------------------------------------------------
+  info-title-marginedge:
+    description: Info title should identify the MarginEdge API.
+    severity: warn
+    given: "$.info"
+    then:
+      field: title
+      function: pattern
+      functionOptions:
+        match: "MarginEdge"
+  info-description-required:
+    description: Info description is required and should be meaningful.
+    severity: warn
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+  info-version-required:
+    description: Info version is required.
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+  info-contact-required:
+    description: Provide a contact for the API.
+    severity: info
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  # ------------------------------------------------------------------
+  # OPENAPI VERSION
+  # ------------------------------------------------------------------
+  oas3-version-pinned:
+    description: This catalog standardizes on OpenAPI 3.0.x.
+    severity: warn
+    given: "$.openapi"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\.0\\.[0-9]+$"
+
+  # ------------------------------------------------------------------
+  # SERVERS
+  # ------------------------------------------------------------------
+  servers-defined:
+    description: At least one server must be defined.
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+  servers-https-only:
+    description: Servers must use HTTPS.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+  server-is-marginedge-public:
+    description: The public API is served under api.marginedge.com/public.
+    severity: info
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "api\\.marginedge\\.com/public"
+
+  # ------------------------------------------------------------------
+  # PATHS — NAMING CONVENTIONS
+  # ------------------------------------------------------------------
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: ".+/$"
+  paths-camelcase-segments:
+    description: Path segments use camelCase (e.g. restaurantUnits, vendorItems); avoid snake_case or kebab-case.
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "[_-]"
+  paths-no-query-string:
+    description: Path keys must not contain query strings.
+    severity: error
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\?"
+
+  # ------------------------------------------------------------------
+  # OPERATIONS
+  # ------------------------------------------------------------------
+  operation-read-only-get:
+    description: The MarginEdge Public API is read-only; only GET operations are permitted.
+    severity: error
+    given: "$.paths[*]"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^(get|parameters|summary|description)$"
+  operation-summary-required:
+    description: Every operation needs a summary.
+    severity: warn
+    given: "$.paths[*][get]"
+    then:
+      field: summary
+      function: truthy
+  operation-summary-marginedge-prefixed:
+    description: Operation summaries are prefixed with "MarginEdge".
+    severity: warn
+    given: "$.paths[*][get].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^MarginEdge "
+  operation-description-required:
+    description: Every operation needs a description.
+    severity: info
+    given: "$.paths[*][get]"
+    then:
+      field: description
+      function: truthy
+  operation-id-required:
+    description: Every operation needs an operationId.
+    severity: error
+    given: "$.paths[*][get]"
+    then:
+      field: operationId
+      function: truthy
+  operation-id-camelcase:
+    description: operationId should be camelCase (e.g. getOrders, getVendorItems).
+    severity: warn
+    given: "$.paths[*][get].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+  operation-id-verb-prefix:
+    description: Read operations should start with a get/list verb.
+    severity: info
+    given: "$.paths[*][get].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(get|list)"
+  operation-tags-required:
+    description: Every operation must be tagged.
+    severity: warn
+    given: "$.paths[*][get]"
+    then:
+      field: tags
+      function: truthy
+
+  # ------------------------------------------------------------------
+  # TAGS
+  # ------------------------------------------------------------------
+  global-tags-defined:
+    description: Top-level tags array should be defined with descriptions.
+    severity: info
+    given: "$"
+    then:
+      field: tags
+      function: truthy
+  tag-has-description:
+    description: Each global tag should have a description.
+    severity: info
+    given: "$.tags[*]"
+    then:
+      field: description
+      function: truthy
+  tag-title-case:
+    description: Tags use Title Case (e.g. "Restaurant Units", "Vendors").
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)*$"
+
+  # ------------------------------------------------------------------
+  # PARAMETERS
+  # ------------------------------------------------------------------
+  parameter-description-required:
+    description: Parameters should be described.
+    severity: info
+    given: "$.paths[*][get].parameters[*]"
+    then:
+      field: description
+      function: truthy
+  parameter-camelcase:
+    description: Query and path parameters use camelCase (restaurantUnitId, vendorId, nextPage).
+    severity: warn
+    given: "$.paths[*][get].parameters[?(@.in=='query' || @.in=='path')].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+  parameter-no-apikey-in-query:
+    description: API keys must travel in the x-api-key header, never in the query string.
+    severity: error
+    given: "$.paths[*][get].parameters[?(@.in=='query')].name"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "(?i)(api[-_]?key|apikey|token)"
+  pagination-cursor-name:
+    description: Cursor pagination standardizes on the "nextPage" parameter name.
+    severity: info
+    given: "$.paths[*][get].parameters[?(@.in=='query')].name"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "^(page|offset|cursor|pageToken)$"
+
+  # ------------------------------------------------------------------
+  # HTTP METHOD CONVENTIONS
+  # ------------------------------------------------------------------
+  get-no-request-body:
+    description: GET operations must not declare a request body.
+    severity: error
+    given: "$.paths[*][get]"
+    then:
+      field: requestBody
+      function: falsy
+
+  # ------------------------------------------------------------------
+  # RESPONSES
+  # ------------------------------------------------------------------
+  response-200-defined:
+    description: Each operation must define a 200 success response.
+    severity: error
+    given: "$.paths[*][get].responses"
+    then:
+      field: "200"
+      function: truthy
+  response-403-defined:
+    description: Operations should document a 403 (unauthorized / unauthorized restaurant) response.
+    severity: warn
+    given: "$.paths[*][get].responses"
+    then:
+      field: "403"
+      function: truthy
+  response-json-content:
+    description: Success responses should return application/json.
+    severity: warn
+    given: "$.paths[*][get].responses.200.content"
+    then:
+      field: "application/json"
+      function: truthy
+
+  # ------------------------------------------------------------------
+  # SCHEMAS — PROPERTY NAMING
+  # ------------------------------------------------------------------
+  schema-property-camelcase:
+    description: Schema properties use camelCase (centralProductId, vendorItemCode, accountingCode).
+    severity: warn
+    given: "$.components.schemas[*]..properties[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+  schema-property-typed:
+    description: Schema properties must declare a type.
+    severity: warn
+    given: "$.components.schemas[*]..properties[*]"
+    then:
+      field: type
+      function: truthy
+  pagination-nextpage-field:
+    description: List response schemas should expose a "nextPage" cursor field.
+    severity: info
+    given: "$.components.schemas[?(@property.match(/ResponseModel$/))].properties"
+    then:
+      field: nextPage
+      function: truthy
+
+  # ------------------------------------------------------------------
+  # SECURITY
+  # ------------------------------------------------------------------
+  global-security-defined:
+    description: A global security requirement must be declared.
+    severity: error
+    given: "$"
+    then:
+      field: security
+      function: truthy
+  security-scheme-apikey-header:
+    description: The API key scheme must be apiKey-in-header named x-api-key.
+    severity: warn
+    given: "$.components.securitySchemes[*]"
+    then:
+      - field: type
+        function: pattern
+        functionOptions:
+          match: "^apiKey$"
+      - field: in
+        function: pattern
+        functionOptions:
+          match: "^header$"
+  security-scheme-described:
+    description: Security schemes should be described.
+    severity: info
+    given: "$.components.securitySchemes[*]"
+    then:
+      field: description
+      function: truthy

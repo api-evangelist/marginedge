@@ -35,15 +35,31 @@ apis:
       and business intelligence providers to pull operational data into custom
       reporting and analytics tools.
     humanURL: https://developer.marginedge.com/
+    baseURL: https://api.marginedge.com/public
     tags:
       - Invoices
       - Products
+      - Vendors
+      - Categories
+      - Restaurant Units
       - Reporting
     properties:
       - type: Documentation
         url: https://developer.marginedge.com/
       - type: Documentation
         url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+      - type: OpenAPI
+        url: openapi/marginedge-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/marginedge-categories.yaml
+      - type: NaftikoCapability
+        url: capabilities/marginedge-orders.yaml
+      - type: NaftikoCapability
+        url: capabilities/marginedge-products.yaml
+      - type: NaftikoCapability
+        url: capabilities/marginedge-restaurant-units.yaml
+      - type: NaftikoCapability
+        url: capabilities/marginedge-vendors.yaml
 common:
   - type: Website
     url: https://www.marginedge.com/
@@ -57,6 +73,16 @@ common:
     url: https://www.marginedge.com/blog
   - type: LinkedIn
     url: https://www.linkedin.com/company/marginedge
+  - type: SpectralRules
+    url: rules/marginedge-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/marginedge-vocabulary.yml
+  - type: Plans
+    url: plans/marginedge-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/marginedge-rate-limits.yml
+  - type: FinOps
+    url: finops/marginedge-finops.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-schema/public-api-get-orders-response-model-schema.json",
+  "title": "GetOrdersResponseModel",
+  "description": "GetOrdersResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "nextPage": {
+      "type": "string",
+      "description": "Unique key for the next page of results",
+      "example": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "createdDate": {
+            "type": "string",
+            "description": "Date the order was created in MarginEdge, formatted YYYY-MM-DD",
+            "example": "2026-05-01"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "An identifier of the order in MarginEdge, unique within this restaurant",
+            "example": "me-order-9f3a2b"
+          },
+          "invoiceNumber": {
+            "type": "string",
+            "description": "Vendor\u2019s invoice number for this order",
+            "example": "INV-100245"
+          },
+          "vendorId": {
+            "type": "string",
+            "description": "An identifier of the vendor for this order in MarginEdge, unique within this restaurant",
+            "example": "me-vendor-9f3a2b"
+          },
+          "vendorName": {
+            "type": "string",
+            "description": "Name of the vendor for this order",
+            "example": "Sample Vendor"
+          },
+          "customerNumber": {
+            "type": "string",
+            "description": "Vendor\u2019s customer number for this order",
+            "example": "INV-100245"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "description": "Invoice date for this order, formatted YYYY-MM-DD",
+            "example": "2026-05-01"
+          },
+          "paymentAccount": {
+            "type": "string",
+            "description": "Name of the payment account in MarginEdge used for this order",
+            "example": "example"
+          },
+          "orderTotal": {
+            "type": "number",
+            "description": "The final order total reflecting any necessary handwritten adjustments, based on the configured vendor credit mode for this vendor",
+            "example": 42.75
+          },
+          "status": {
+            "type": "string",
+            "description": "Current invoice status for this order.  See Glossary for more information about the valid values for this field.",
+            "example": "PROCESSED"
+          }
+        }
+      }
+    }
+  }
+}

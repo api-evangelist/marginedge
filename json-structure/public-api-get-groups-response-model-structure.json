@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-groups-response-model-structure.json",
+  "name": "GetGroupsResponseModel",
+  "description": "GetGroupsResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "groups": {
+      "type": "array",
+      "description": "List of restaurant unit groups accessible to the user",
+      "items": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "double",
+            "description": "Unique identifier of the company this group belongs to",
+            "example": 12345
+          },
+          "conceptName": {
+            "type": "string",
+            "description": "Name of the concept",
+            "example": "Sample Concept"
+          },
+          "lastModifiedDate": {
+            "type": "string",
+            "description": "Timestamp when the group was last modified (ISO 8601 format)",
+            "example": "2026-05-01"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of the company",
+            "example": "Sample Company"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the group",
+            "example": "Sample Name"
+          },
+          "groupCategoryName": {
+            "type": "string",
+            "description": "Name of the group category (nullable)",
+            "example": "Sample Groupcategory"
+          },
+          "conceptId": {
+            "type": "double",
+            "description": "Unique identifier of the concept this group belongs to",
+            "example": 12345
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the group (UUID)",
+            "example": "me--9f3a2b"
+          },
+          "groupCategoryId": {
+            "type": "string",
+            "description": "UUID of the group category this group belongs to (nullable)",
+            "example": "me-groupcategory-9f3a2b"
+          },
+          "units": {
+            "type": "array",
+            "description": "List of restaurant units in this group",
+            "items": {
+              "type": "object",
+              "properties": {
+                "unitName": {
+                  "type": "string",
+                  "description": "Name of the restaurant unit",
+                  "example": "Sample Unit"
+                },
+                "unitId": {
+                  "type": "double",
+                  "description": "Unique identifier of the restaurant unit",
+                  "example": 12345
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

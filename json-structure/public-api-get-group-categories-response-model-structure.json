@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-group-categories-response-model-structure.json",
+  "name": "GetGroupCategoriesResponseModel",
+  "description": "GetGroupCategoriesResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "groupCategories": {
+      "type": "array",
+      "description": "List of group categories accessible to the user",
+      "items": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "double",
+            "description": "Unique identifier of the company this category belongs to",
+            "example": 12345
+          },
+          "conceptName": {
+            "type": "string",
+            "description": "Name of the concept",
+            "example": "Sample Concept"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of the company",
+            "example": "Sample Company"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the category",
+            "example": "Sample Name"
+          },
+          "conceptId": {
+            "type": "double",
+            "description": "Unique identifier of the concept this category belongs to",
+            "example": 12345
+          },
+          "permission": {
+            "type": "string",
+            "description": "Permission level for the category (PUBLIC or RESTRICTED)",
+            "example": "example"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the category (UUID)",
+            "example": "me--9f3a2b"
+          }
+        }
+      }
+    }
+  }
+}

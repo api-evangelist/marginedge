@@ -1,0 +1,17 @@
+{
+  "nextPage": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+  "products": [
+    {
+      "centralProductId": "me-centralproduct-9f3a2b",
+      "latestPrice": 458.24,
+      "reportByUnit": "case",
+      "taxExempt": false,
+      "companyConceptProductId": "me-companyconceptproduct-9f3a2b",
+      "categories": [
+        {}
+      ],
+      "productName": "Sample productName",
+      "itemCount": 8
+    }
+  ]
+}

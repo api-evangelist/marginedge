@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/json-structure/public-api-get-order-detail-response-model-structure.json",
+  "name": "GetOrderDetailResponseModel",
+  "description": "GetOrderDetailResponseModel schema from MarginEdge Public API",
+  "type": "object",
+  "properties": {
+    "deliveryCharges": {
+      "type": "double",
+      "description": "The amount of the delivery charges on this order",
+      "example": 1
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "attachmentUrl": {
+            "type": "string",
+            "description": "Temporary URL providing access to the specific file attachment, which can be downloaded and stored externally",
+            "example": "example"
+          },
+          "attachmentId": {
+            "type": "double",
+            "description": "Unique identifier of an attachment for this order (e.g., an invoice image, PDF document, CSV/EDI file)",
+            "example": 12345
+          }
+        }
+      }
+    },
+    "orderId": {
+      "type": "string",
+      "description": "An identifier of the order in MarginEdge, unique within this restaurant",
+      "example": "me-order-9f3a2b"
+    },
+    "otherCharges": {
+      "type": "double",
+      "description": "The amount of other charges on this order",
+      "example": 1
+    },
+    "vendorId": {
+      "type": "string",
+      "description": "An identifier of the vendor for this order in MarginEdge, unique within this restaurant",
+      "example": "me-vendor-9f3a2b"
+    },
+    "tax": {
+      "type": "double",
+      "description": "The amount of the total tax (or PST in Canada) on this order",
+      "example": 1
+    },
+    "vendorName": {
+      "type": "string",
+      "description": "Name of the vendor for this order",
+      "example": "Sample Vendor"
+    },
+    "customerNumber": {
+      "type": "string",
+      "description": "Vendor\u2019s customer number for this order",
+      "example": "INV-100245"
+    },
+    "invoiceDate": {
+      "type": "string",
+      "description": "Invoice date for this order, formatted YYYY-MM-DD",
+      "example": "2026-05-01"
+    },
+    "orderTotal": {
+      "type": "double",
+      "description": "The final order total reflecting any necessary handwritten adjustments, based on the configured vendor credit mode for this vendor",
+      "example": 42.75
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "unitPrice": {
+            "type": "double",
+            "description": "Unit price for this vendor item and packaging on this order",
+            "example": 42.75
+          },
+          "vendorItemCode": {
+            "type": "string",
+            "description": "Vendor\u2019s item code or SKU identifying the item",
+            "example": "example"
+          },
+          "quantity": {
+            "type": "double",
+            "description": "Quantity of this vendor item/packaging that were purchased on this order.  This value can be negative on credit memos",
+            "example": 3
+          },
+          "linePrice": {
+            "type": "double",
+            "description": "Total price paid for this line item.  This value can be negative on credit memos",
+            "example": 42.75
+          },
+          "vendorItemName": {
+            "type": "string",
+            "description": "Name of the vendor item purchased",
+            "example": "Sample Vendoritem"
+          },
+          "companyConceptProductId": {
+            "type": "string",
+            "description": "Identifier of the product (unique within the company concept this restaurant belongs to) this item is assigned to in MarginEdge",
+            "example": "me-companyconceptproduct-9f3a2b"
+          },
+          "categoryId": {
+            "type": "string",
+            "description": "Identifier of a category and populated when it\u2019s a category-level invoice and line item level detail isn\u2019t available",
+            "example": "me-category-9f3a2b"
+          },
+          "packagingId": {
+            "type": "string",
+            "description": "Identifier of the packaging for this vendor item that was purchased",
+            "example": "me-packaging-9f3a2b"
+          }
+        }
+      }
+    },
+    "isCredit": {
+      "type": "boolean",
+      "description": "Indicates whether the document is an invoice or a credit.  True = credit; false = invoice",
+      "example": true
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date the order was created in MarginEdge, formatted YYYY-MM-DD",
+      "example": "2026-05-01"
+    },
+    "inputTaxCredits": {
+      "type": "double",
+      "description": "The amount of the total input tax credits (GST/HST) on this order.  This is applicable only to Canadian customers.",
+      "example": 1
+    },
+    "invoiceNumber": {
+      "type": "string",
+      "description": "Vendor\u2019s invoice number for this order",
+      "example": "INV-100245"
+    },
+    "creditAmount": {
+      "type": "double",
+      "description": "The amount of any included credit on the order",
+      "example": 42.75
+    },
+    "paymentAccount": {
+      "type": "string",
+      "description": "Name of the payment account in MarginEdge used for this order",
+      "example": "example"
+    },
+    "otherDescription": {
+      "type": "string",
+      "description": "A description of the other charges on this order",
+      "example": "example"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current invoice status for this order.  See Glossary for more information about the valid values for this field.",
+      "example": "PROCESSED"
+    }
+  }
+}

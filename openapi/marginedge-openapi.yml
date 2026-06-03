@@ -1,0 +1,1067 @@
+openapi: 3.0.3
+info:
+  title: MarginEdge Public API
+  version: 1.0.0
+  description: Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports 
+    one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged
+    via an opaque nextPage cursor.
+  contact:
+    name: MarginEdge Developer Support
+    url: https://developer.marginedge.com/
+  x-spec-source: Derived from the published MarginEdge developer portal (developer.marginedge.com) API reference and embedded API definitions.
+servers:
+- url: https://api.marginedge.com/public
+  description: MarginEdge Public API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Restaurant Units
+  description: Restaurants, groups, and group categories you can access
+- name: Orders
+  description: Invoices/orders processed in MarginEdge
+- name: Products
+  description: Products tracked in a restaurant
+- name: Vendors
+  description: Vendors and their items and packaging
+- name: Categories
+  description: Accounting categories
+paths:
+  /categories:
+    get:
+      operationId: getCategories
+      summary: MarginEdge Get Categories
+      tags:
+      - Categories
+      description: Get Categories.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCategoriesResponseModel'
+              examples:
+                GetCategories200Example:
+                  summary: Default getCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    categories:
+                    - categoryType: Food
+                      accountingCode: 5010
+                      categoryName: Sample Category
+                      categoryId: me-category-9f3a2b
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders:
+    get:
+      operationId: getOrders
+      summary: MarginEdge Get Orders
+      tags:
+      - Orders
+      description: Get Orders.
+      parameters:
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      - name: orderStatus
+        in: query
+        required: false
+        schema:
+          type: string
+        example: PROCESSED
+      - name: endDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2026-05-31'
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: startDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2026-05-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrdersResponseModel'
+              examples:
+                GetOrders200Example:
+                  summary: Default getOrders 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    orders:
+                    - createdDate: '2026-05-01'
+                      orderId: me-order-9f3a2b
+                      invoiceNumber: INV-100245
+                      vendorId: me-vendor-9f3a2b
+                      vendorName: Sample Vendor
+                      customerNumber: INV-100245
+                      invoiceDate: '2026-05-01'
+                      paymentAccount: example
+                      orderTotal: 42.75
+                      status: PROCESSED
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders/{orderId}:
+    get:
+      operationId: getOrderDetail
+      summary: MarginEdge Get Order Detail
+      tags:
+      - Orders
+      description: Get Order Detail.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+        example: me-order-7c1d4e
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrderDetailResponseModel'
+              examples:
+                GetOrderDetail200Example:
+                  summary: Default getOrderDetail 200 response
+                  x-microcks-default: true
+                  value:
+                    deliveryCharges: 1
+                    attachments:
+                    - attachmentUrl: example
+                      attachmentId: 12345
+                    orderId: me-order-9f3a2b
+                    otherCharges: 1
+                    vendorId: me-vendor-9f3a2b
+                    tax: 1
+                    vendorName: Sample Vendor
+                    customerNumber: INV-100245
+                    invoiceDate: '2026-05-01'
+                    orderTotal: 42.75
+                    lineItems:
+                    - unitPrice: 42.75
+                      vendorItemCode: example
+                      quantity: 3
+                      linePrice: 42.75
+                      vendorItemName: Sample Vendoritem
+                      companyConceptProductId: me-companyconceptproduct-9f3a2b
+                      categoryId: me-category-9f3a2b
+                      packagingId: me-packaging-9f3a2b
+                    isCredit: true
+                    createdDate: '2026-05-01'
+                    inputTaxCredits: 1
+                    invoiceNumber: INV-100245
+                    creditAmount: 42.75
+                    paymentAccount: example
+                    otherDescription: example
+                    status: PROCESSED
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /products:
+    get:
+      operationId: getProducts
+      summary: MarginEdge Get Products
+      tags:
+      - Products
+      description: Get Products.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsResponseModel'
+              examples:
+                GetProducts200Example:
+                  summary: Default getProducts 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    products:
+                    - centralProductId: me-centralproduct-9f3a2b
+                      latestPrice: 42.75
+                      reportByUnit: case
+                      taxExempt: true
+                      companyConceptProductId: me-companyconceptproduct-9f3a2b
+                      categories:
+                      - percentAllocation: 1
+                        categoryId: me-category-9f3a2b
+                      productName: Sample Product
+                      itemCount: 3
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /restaurantUnits:
+    get:
+      operationId: getRestaurantUnits
+      summary: MarginEdge Get Restaurant Units
+      tags:
+      - Restaurant Units
+      description: Get Restaurant Units.
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAvailableRestaurantUnitsResponseModel'
+              examples:
+                GetRestaurantUnits200Example:
+                  summary: Default getRestaurantUnits 200 response
+                  x-microcks-default: true
+                  value:
+                    restaurants:
+                    - name: Sample Name
+                      id: 12345
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /restaurantUnits/groupCategories:
+    get:
+      operationId: getRestaurantUnitGroupCategories
+      summary: MarginEdge Get Restaurant Unit Group Categories
+      tags:
+      - Restaurant Units
+      description: Get Restaurant Unit Group Categories.
+      parameters:
+      - name: conceptId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupCategoriesResponseModel'
+              examples:
+                GetRestaurantUnitGroupCategories200Example:
+                  summary: Default getRestaurantUnitGroupCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    groupCategories:
+                    - companyId: 12345
+                      conceptName: Sample Concept
+                      companyName: Sample Company
+                      name: Sample Name
+                      conceptId: 12345
+                      permission: example
+                      id: me--9f3a2b
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /restaurantUnits/groups:
+    get:
+      operationId: getRestaurantUnitGroups
+      summary: MarginEdge Get Restaurant Unit Groups
+      tags:
+      - Restaurant Units
+      description: Get Restaurant Unit Groups.
+      parameters:
+      - name: conceptId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupsResponseModel'
+              examples:
+                GetRestaurantUnitGroups200Example:
+                  summary: Default getRestaurantUnitGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    groups:
+                    - companyId: 12345
+                      conceptName: Sample Concept
+                      lastModifiedDate: '2026-05-01'
+                      companyName: Sample Company
+                      name: Sample Name
+                      groupCategoryName: Sample Groupcategory
+                      conceptId: 12345
+                      id: me--9f3a2b
+                      groupCategoryId: me-groupcategory-9f3a2b
+                      units:
+                      - unitName: Sample Unit
+                        unitId: 12345
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vendors:
+    get:
+      operationId: getVendors
+      summary: MarginEdge Get Vendors
+      tags:
+      - Vendors
+      description: Get Vendors.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVendorsResponseModel'
+              examples:
+                GetVendors200Example:
+                  summary: Default getVendors 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    vendors:
+                    - vendorId: me-vendor-9f3a2b
+                      vendorName: Sample Vendor
+                      centralVendorId: me-centralvendor-9f3a2b
+                      vendorAccounts:
+                      - vendorAccountNumber: INV-100245
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vendors/{vendorId}/vendorItems:
+    get:
+      operationId: getVendorItems
+      summary: MarginEdge Get Vendor Items
+      tags:
+      - Vendors
+      description: Get Vendor Items.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: vendorId
+        in: path
+        required: true
+        schema:
+          type: string
+        example: me-vendor-9f3a2b
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVendorItemsResponseModel'
+              examples:
+                GetVendorItems200Example:
+                  summary: Default getVendorItems 200 response
+                  x-microcks-default: true
+                  value:
+                    vendorItems:
+                    - vendorItemCode: example
+                      centralVendorItemId: me-centralvendoritem-9f3a2b
+                      vendorId: me-vendor-9f3a2b
+                      companyConceptProductId: me-companyconceptproduct-9f3a2b
+                      vendorName: Sample Vendor
+                      centralVendorId: me-centralvendor-9f3a2b
+                      productName: Sample Product
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /vendors/{vendorId}/vendorItems/{vendorItemCode}/packaging:
+    get:
+      operationId: getVendorItemsPackaging
+      summary: MarginEdge Get Vendor Items Packaging
+      tags:
+      - Vendors
+      description: Get Vendor Items Packaging.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: vendorId
+        in: path
+        required: true
+        schema:
+          type: string
+        example: me-vendor-9f3a2b
+      - name: vendorItemCode
+        in: path
+        required: true
+        schema:
+          type: string
+        example: VIC-88231
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVendorItemsPackagingResponseModel'
+              examples:
+                GetVendorItemsPackaging200Example:
+                  summary: Default getVendorItemsPackaging 200 response
+                  x-microcks-default: true
+                  value:
+                    packagings:
+                    - unit: case
+                      quantity: 3
+                      packagingName: Sample Packaging
+                      packagingId: me-packaging-9f3a2b
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key issued through the MarginEdge developer portal.
+  schemas:
+    GetAvailableRestaurantUnitsResponseModel:
+      type: object
+      properties:
+        restaurants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the restaurant in MarginEdge
+                example: Sample Name
+              id:
+                type: number
+                description: Unique identifier of this restaurant that will be used in the request to all other API endpoints
+                example: 12345
+    GetCategoriesResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              categoryType:
+                type: string
+                description: Type of category (Food, Beer, Wine, Liquor, N/A Bev, Retail, Other, Labor, or a custom category type)
+                example: Food
+              accountingCode:
+                type: number
+                description: Account code for the category in the integrated accounting system
+                example: 5010
+              categoryName:
+                type: string
+                description: Name of the category in MarginEdge
+                example: Sample Category
+              categoryId:
+                type: string
+                description: Identifier of the category in MarginEdge
+                example: me-category-9f3a2b
+    GetGroupCategoriesResponseModel:
+      type: object
+      properties:
+        groupCategories:
+          type: array
+          description: List of group categories accessible to the user
+          items:
+            type: object
+            properties:
+              companyId:
+                type: number
+                description: Unique identifier of the company this category belongs to
+                example: 12345
+              conceptName:
+                type: string
+                description: Name of the concept
+                example: Sample Concept
+              companyName:
+                type: string
+                description: Name of the company
+                example: Sample Company
+              name:
+                type: string
+                description: Name of the category
+                example: Sample Name
+              conceptId:
+                type: number
+                description: Unique identifier of the concept this category belongs to
+                example: 12345
+              permission:
+                type: string
+                description: Permission level for the category (PUBLIC or RESTRICTED)
+                example: example
+              id:
+                type: string
+                description: Unique identifier for the category (UUID)
+                example: me--9f3a2b
+    GetGroupsResponseModel:
+      type: object
+      properties:
+        groups:
+          type: array
+          description: List of restaurant unit groups accessible to the user
+          items:
+            type: object
+            properties:
+              companyId:
+                type: number
+                description: Unique identifier of the company this group belongs to
+                example: 12345
+              conceptName:
+                type: string
+                description: Name of the concept
+                example: Sample Concept
+              lastModifiedDate:
+                type: string
+                description: Timestamp when the group was last modified (ISO 8601 format)
+                example: '2026-05-01'
+              companyName:
+                type: string
+                description: Name of the company
+                example: Sample Company
+              name:
+                type: string
+                description: Name of the group
+                example: Sample Name
+              groupCategoryName:
+                type: string
+                description: Name of the group category (nullable)
+                example: Sample Groupcategory
+              conceptId:
+                type: number
+                description: Unique identifier of the concept this group belongs to
+                example: 12345
+              id:
+                type: string
+                description: Unique identifier for the group (UUID)
+                example: me--9f3a2b
+              groupCategoryId:
+                type: string
+                description: UUID of the group category this group belongs to (nullable)
+                example: me-groupcategory-9f3a2b
+              units:
+                type: array
+                description: List of restaurant units in this group
+                items:
+                  type: object
+                  properties:
+                    unitName:
+                      type: string
+                      description: Name of the restaurant unit
+                      example: Sample Unit
+                    unitId:
+                      type: number
+                      description: Unique identifier of the restaurant unit
+                      example: 12345
+    GetOrderDetailResponseModel:
+      type: object
+      properties:
+        deliveryCharges:
+          type: number
+          description: The amount of the delivery charges on this order
+          example: 1
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              attachmentUrl:
+                type: string
+                description: Temporary URL providing access to the specific file attachment, which can be downloaded and stored externally
+                example: example
+              attachmentId:
+                type: number
+                description: Unique identifier of an attachment for this order (e.g., an invoice image, PDF document, CSV/EDI file)
+                example: 12345
+        orderId:
+          type: string
+          description: An identifier of the order in MarginEdge, unique within this restaurant
+          example: me-order-9f3a2b
+        otherCharges:
+          type: number
+          description: The amount of other charges on this order
+          example: 1
+        vendorId:
+          type: string
+          description: An identifier of the vendor for this order in MarginEdge, unique within this restaurant
+          example: me-vendor-9f3a2b
+        tax:
+          type: number
+          description: The amount of the total tax (or PST in Canada) on this order
+          example: 1
+        vendorName:
+          type: string
+          description: Name of the vendor for this order
+          example: Sample Vendor
+        customerNumber:
+          type: string
+          description: Vendor’s customer number for this order
+          example: INV-100245
+        invoiceDate:
+          type: string
+          description: Invoice date for this order, formatted YYYY-MM-DD
+          example: '2026-05-01'
+        orderTotal:
+          type: number
+          description: The final order total reflecting any necessary handwritten adjustments, based on the configured vendor credit mode for this vendor
+          example: 42.75
+        lineItems:
+          type: array
+          items:
+            type: object
+            properties:
+              unitPrice:
+                type: number
+                description: Unit price for this vendor item and packaging on this order
+                example: 42.75
+              vendorItemCode:
+                type: string
+                description: Vendor’s item code or SKU identifying the item
+                example: example
+              quantity:
+                type: number
+                description: Quantity of this vendor item/packaging that were purchased on this order.  This value can be negative on credit memos
+                example: 3
+              linePrice:
+                type: number
+                description: Total price paid for this line item.  This value can be negative on credit memos
+                example: 42.75
+              vendorItemName:
+                type: string
+                description: Name of the vendor item purchased
+                example: Sample Vendoritem
+              companyConceptProductId:
+                type: string
+                description: Identifier of the product (unique within the company concept this restaurant belongs to) this item is assigned to in MarginEdge
+                example: me-companyconceptproduct-9f3a2b
+              categoryId:
+                type: string
+                description: Identifier of a category and populated when it’s a category-level invoice and line item level detail isn’t available
+                example: me-category-9f3a2b
+              packagingId:
+                type: string
+                description: Identifier of the packaging for this vendor item that was purchased
+                example: me-packaging-9f3a2b
+        isCredit:
+          type: boolean
+          description: Indicates whether the document is an invoice or a credit.  True = credit; false = invoice
+          example: true
+        createdDate:
+          type: string
+          description: Date the order was created in MarginEdge, formatted YYYY-MM-DD
+          example: '2026-05-01'
+        inputTaxCredits:
+          type: number
+          description: The amount of the total input tax credits (GST/HST) on this order.  This is applicable only to Canadian customers.
+          example: 1
+        invoiceNumber:
+          type: string
+          description: Vendor’s invoice number for this order
+          example: INV-100245
+        creditAmount:
+          type: number
+          description: The amount of any included credit on the order
+          example: 42.75
+        paymentAccount:
+          type: string
+          description: Name of the payment account in MarginEdge used for this order
+          example: example
+        otherDescription:
+          type: string
+          description: A description of the other charges on this order
+          example: example
+        status:
+          type: string
+          description: Current invoice status for this order.  See Glossary for more information about the valid values for this field.
+          example: PROCESSED
+    GetOrdersResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              createdDate:
+                type: string
+                description: Date the order was created in MarginEdge, formatted YYYY-MM-DD
+                example: '2026-05-01'
+              orderId:
+                type: string
+                description: An identifier of the order in MarginEdge, unique within this restaurant
+                example: me-order-9f3a2b
+              invoiceNumber:
+                type: string
+                description: Vendor’s invoice number for this order
+                example: INV-100245
+              vendorId:
+                type: string
+                description: An identifier of the vendor for this order in MarginEdge, unique within this restaurant
+                example: me-vendor-9f3a2b
+              vendorName:
+                type: string
+                description: Name of the vendor for this order
+                example: Sample Vendor
+              customerNumber:
+                type: string
+                description: Vendor’s customer number for this order
+                example: INV-100245
+              invoiceDate:
+                type: string
+                description: Invoice date for this order, formatted YYYY-MM-DD
+                example: '2026-05-01'
+              paymentAccount:
+                type: string
+                description: Name of the payment account in MarginEdge used for this order
+                example: example
+              orderTotal:
+                type: number
+                description: The final order total reflecting any necessary handwritten adjustments, based on the configured vendor credit mode for this vendor
+                example: 42.75
+              status:
+                type: string
+                description: Current invoice status for this order.  See Glossary for more information about the valid values for this field.
+                example: PROCESSED
+    GetProductsResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              centralProductId:
+                type: string
+                description: Identifier of the product across all restaurants in MarginEdge, if applicable. Not all products have a central identifier.
+                example: me-centralproduct-9f3a2b
+              latestPrice:
+                type: number
+                description: Most recent price of this product based on purchasing data
+                example: 42.75
+              reportByUnit:
+                type: string
+                description: Unit that this product is reported by in MarginEdge (e.g., EACH, POUND)
+                example: case
+              taxExempt:
+                type: boolean
+                description: Indicates whether this product is marked tax exempt
+                example: true
+              companyConceptProductId:
+                type: string
+                description: Identifier of the product unique within the company concept this restaurant belongs to
+                example: me-companyconceptproduct-9f3a2b
+              categories:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    percentAllocation:
+                      type: number
+                      description: Percent allocation of the product to this category
+                      example: 1
+                    categoryId:
+                      type: string
+                      description: Identifier of a category to which this product belongs
+                      example: me-category-9f3a2b
+              productName:
+                type: string
+                description: Name of the product
+                example: Sample Product
+              itemCount:
+                type: number
+                description: Number of vendor items assigned to this product (in this restaurant)
+                example: 3
+    GetVendorItemsPackagingResponseModel:
+      type: object
+      properties:
+        packagings:
+          type: array
+          items:
+            type: object
+            properties:
+              unit:
+                type: string
+                description: Unit this packaging is measured in
+                example: case
+              quantity:
+                type: number
+                description: Quantity of the packaging unit present in this packaging
+                example: 3
+              packagingName:
+                type: string
+                description: Name of the packaging in MarginEdge
+                example: Sample Packaging
+              packagingId:
+                type: string
+                description: Identifier of the packaging for this vendor item that was purchased
+                example: me-packaging-9f3a2b
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+    GetVendorItemsResponseModel:
+      type: object
+      properties:
+        vendorItems:
+          type: array
+          items:
+            type: object
+            properties:
+              vendorItemCode:
+                type: string
+                description: Vendor’s item code or SKU identifying the item
+                example: example
+              centralVendorItemId:
+                type: string
+                description: Unique identifier of this vendor item in MarginEdge (across all restaurant units/vendors)
+                example: me-centralvendoritem-9f3a2b
+              vendorId:
+                type: string
+                description: Unique identifier of the vendor within this restaurant unit
+                example: me-vendor-9f3a2b
+              companyConceptProductId:
+                type: string
+                description: Identifier of the product (unique within the company concept this restaurant belongs to) this item is assigned to in MarginEdge
+                example: me-companyconceptproduct-9f3a2b
+              vendorName:
+                type: string
+                description: Name of the vendor in MarginEdge
+                example: Sample Vendor
+              centralVendorId:
+                type: string
+                description: Unique identifier of the vendor centrally (across all restaurant units in MarginEdge)
+                example: me-centralvendor-9f3a2b
+              productName:
+                type: string
+                description: Name of the product
+                example: Sample Product
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+    GetVendorsResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        vendors:
+          type: array
+          items:
+            type: object
+            properties:
+              vendorId:
+                type: string
+                description: Unique identifier of the vendor within this restaurant unit
+                example: me-vendor-9f3a2b
+              vendorName:
+                type: string
+                description: Name of the vendor in MarginEdge
+                example: Sample Vendor
+              centralVendorId:
+                type: string
+                description: Unique identifier of the vendor centrally (across all restaurant units in MarginEdge)
+                example: me-centralvendor-9f3a2b
+              vendorAccounts:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    vendorAccountNumber:
+                      type: string
+                      description: The vendor’s account number for this restaurant
+                      example: INV-100245
+  responses:
+    BadRequest:
+      description: Bad request
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    NotFound:
+      description: Resource not found
+    ServerError:
+      description: Internal server error

@@ -1,0 +1,11 @@
+{
+  "packagings": [
+    {
+      "unit": "case",
+      "quantity": 4,
+      "packagingName": "Sample packagingName",
+      "packagingId": "me-packaging-9f3a2b"
+    }
+  ],
+  "nextPage": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+}
