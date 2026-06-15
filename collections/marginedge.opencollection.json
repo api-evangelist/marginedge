@@ -1,0 +1,301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarginEdge Public API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MarginEdge Get Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/categories",
+            "params": [
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "nextPage",
+                "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Categories."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MarginEdge Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/orders",
+            "params": [
+              {
+                "name": "nextPage",
+                "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+                "type": "query"
+              },
+              {
+                "name": "orderStatus",
+                "value": "PROCESSED",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "2026-05-31",
+                "type": "query"
+              },
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "2026-05-01",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Orders."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Order Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/orders/:orderId",
+            "params": [
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "orderId",
+                "value": "me-order-7c1d4e",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Order Detail."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MarginEdge Get Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/products",
+            "params": [
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "nextPage",
+                "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Products."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Restaurant Units",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MarginEdge Get Restaurant Units",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/restaurantUnits"
+          },
+          "docs": "Get Restaurant Units."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Restaurant Unit Group Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/restaurantUnits/groupCategories",
+            "params": [
+              {
+                "name": "conceptId",
+                "value": "678",
+                "type": "query"
+              },
+              {
+                "name": "companyId",
+                "value": "678",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Restaurant Unit Group Categories."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Restaurant Unit Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/restaurantUnits/groups",
+            "params": [
+              {
+                "name": "conceptId",
+                "value": "678",
+                "type": "query"
+              },
+              {
+                "name": "companyId",
+                "value": "678",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Restaurant Unit Groups."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vendors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MarginEdge Get Vendors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/vendors",
+            "params": [
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "nextPage",
+                "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Vendors."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Vendor Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/vendors/:vendorId/vendorItems",
+            "params": [
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "vendorId",
+                "value": "me-vendor-9f3a2b",
+                "type": "path"
+              },
+              {
+                "name": "nextPage",
+                "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ==",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Vendor Items."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Vendor Items Packaging",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/vendors/:vendorId/vendorItems/:vendorItemCode/packaging",
+            "params": [
+              {
+                "name": "restaurantUnitId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "vendorId",
+                "value": "me-vendor-9f3a2b",
+                "type": "path"
+              },
+              {
+                "name": "vendorItemCode",
+                "value": "VIC-88231",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Vendor Items Packaging."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

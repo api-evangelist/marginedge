@@ -1,16 +1,12 @@
 aid: marginedge
 name: MarginEdge
 description: >-
-  MarginEdge is a restaurant back-office platform that automates invoice
-  processing, inventory, recipe costing, and bill payment, syncing daily food
-  cost and sales data into a restaurant's accounting system. Founded in 2015, it
-  serves over 7,000 restaurants across all 50 states. For developers, MarginEdge
-  publishes a public API through a dedicated developer portal that lets
-  authorized parties programmatically retrieve invoice and product data from the
-  restaurants they are permitted to access. Typical consumers include multi-unit
-  operators building custom reporting, accounting groups, and business
-  intelligence providers contracting with MarginEdge customers to deliver data
-  services.
+  MarginEdge is a restaurant back-office platform that automates invoice processing, inventory, recipe costing, and bill
+  payment, syncing daily food cost and sales data into a restaurant's accounting system. Founded in 2015, it serves over
+  7,000 restaurants across all 50 states. For developers, MarginEdge publishes a public API through a dedicated
+  developer portal that lets authorized parties programmatically retrieve invoice and product data from the restaurants
+  they are permitted to access. Typical consumers include multi-unit operators building custom reporting, accounting
+  groups, and business intelligence providers contracting with MarginEdge customers to deliver data services.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -28,12 +24,10 @@ apis:
   - aid: marginedge:rest-api
     name: MarginEdge Public API
     description: >-
-      The MarginEdge Public API lets authorized developers programmatically
-      retrieve invoice and product data from the MarginEdge restaurants they are
-      permitted to access. It is documented through the MarginEdge developer
-      portal and is commonly used by multi-unit operators, accounting groups,
-      and business intelligence providers to pull operational data into custom
-      reporting and analytics tools.
+      The MarginEdge Public API lets authorized developers programmatically retrieve invoice and product data from the
+      MarginEdge restaurants they are permitted to access. It is documented through the MarginEdge developer portal and
+      is commonly used by multi-unit operators, accounting groups, and business intelligence providers to pull
+      operational data into custom reporting and analytics tools.
     humanURL: https://developer.marginedge.com/
     baseURL: https://api.marginedge.com/public
     tags:
@@ -50,16 +44,6 @@ apis:
         url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
       - type: OpenAPI
         url: openapi/marginedge-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/marginedge-categories.yaml
-      - type: NaftikoCapability
-        url: capabilities/marginedge-orders.yaml
-      - type: NaftikoCapability
-        url: capabilities/marginedge-products.yaml
-      - type: NaftikoCapability
-        url: capabilities/marginedge-restaurant-units.yaml
-      - type: NaftikoCapability
-        url: capabilities/marginedge-vendors.yaml
 common:
   - type: Website
     url: https://www.marginedge.com/
