@@ -2,17 +2,20 @@
   "repo": "marginedge",
   "feeds": [
     {
-      "source": "https://www.marginedge.com/blog",
+      "source": "https://www.marginedge.com/blog/rss.xml",
       "feed_url": "https://www.marginedge.com/blog/rss.xml",
       "title": "",
-      "saved": 7,
-      "method": "discovered"
+      "saved": 1,
+      "method": "feed"
     },
     {
       "source": "https://help.marginedge.com/hc/en-us",
-      "error": "HTTPError"
+      "feed_url": "https://help.marginedge.com/hc/en-us",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 7,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 8,
+  "fetched": "2026-06-27T12:03:07Z"
 }
