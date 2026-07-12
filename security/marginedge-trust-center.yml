@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.marginedge.com/security
+url: https://www.marginedge.com/security
+certifications:
+- SOC 2
+- PCI DSS
+evidence:
+- source: https://www.marginedge.com/security
+  keywords:
+  - soc2
+  - pci dss

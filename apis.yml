@@ -45,6 +45,12 @@ apis:
       - type: OpenAPI
         url: openapi/marginedge-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/marginedge-trust-center.yml
+  - type: DomainSecurity
+    url: security/marginedge-domain-security.yml
+  - type: Authentication
+    url: authentication/marginedge-authentication.yml
   - type: Website
     url: https://www.marginedge.com/
   - type: Documentation
