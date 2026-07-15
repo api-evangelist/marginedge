@@ -45,6 +45,8 @@ apis:
       - type: OpenAPI
         url: openapi/marginedge-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/marginedge-agentic-access.yml
   - type: TrustCenter
     url: security/marginedge-trust-center.yml
   - type: DomainSecurity
