@@ -1,0 +1,355 @@
+openapi: 3.0.3
+info:
+  title: MarginEdge Public Categories Orders API
+  version: 1.0.0
+  description: Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.
+  contact:
+    name: MarginEdge Developer Support
+    url: https://developer.marginedge.com/
+  x-spec-source: Derived from the published MarginEdge developer portal (developer.marginedge.com) API reference and embedded API definitions.
+servers:
+- url: https://api.marginedge.com/public
+  description: MarginEdge Public API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Orders
+  description: Invoices/orders processed in MarginEdge
+paths:
+  /orders:
+    get:
+      operationId: getOrders
+      summary: MarginEdge Get Orders
+      tags:
+      - Orders
+      description: Get Orders.
+      parameters:
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      - name: orderStatus
+        in: query
+        required: false
+        schema:
+          type: string
+        example: PROCESSED
+      - name: endDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2026-05-31'
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: startDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        example: '2026-05-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrdersResponseModel'
+              examples:
+                GetOrders200Example:
+                  summary: Default getOrders 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    orders:
+                    - createdDate: '2026-05-01'
+                      orderId: me-order-9f3a2b
+                      invoiceNumber: INV-100245
+                      vendorId: me-vendor-9f3a2b
+                      vendorName: Sample Vendor
+                      customerNumber: INV-100245
+                      invoiceDate: '2026-05-01'
+                      paymentAccount: example
+                      orderTotal: 42.75
+                      status: PROCESSED
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /orders/{orderId}:
+    get:
+      operationId: getOrderDetail
+      summary: MarginEdge Get Order Detail
+      tags:
+      - Orders
+      description: Get Order Detail.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+        example: me-order-7c1d4e
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrderDetailResponseModel'
+              examples:
+                GetOrderDetail200Example:
+                  summary: Default getOrderDetail 200 response
+                  x-microcks-default: true
+                  value:
+                    deliveryCharges: 1
+                    attachments:
+                    - attachmentUrl: example
+                      attachmentId: 12345
+                    orderId: me-order-9f3a2b
+                    otherCharges: 1
+                    vendorId: me-vendor-9f3a2b
+                    tax: 1
+                    vendorName: Sample Vendor
+                    customerNumber: INV-100245
+                    invoiceDate: '2026-05-01'
+                    orderTotal: 42.75
+                    lineItems:
+                    - unitPrice: 42.75
+                      vendorItemCode: example
+                      quantity: 3
+                      linePrice: 42.75
+                      vendorItemName: Sample Vendoritem
+                      companyConceptProductId: me-companyconceptproduct-9f3a2b
+                      categoryId: me-category-9f3a2b
+                      packagingId: me-packaging-9f3a2b
+                    isCredit: true
+                    createdDate: '2026-05-01'
+                    inputTaxCredits: 1
+                    invoiceNumber: INV-100245
+                    creditAmount: 42.75
+                    paymentAccount: example
+                    otherDescription: example
+                    status: PROCESSED
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+  schemas:
+    GetOrderDetailResponseModel:
+      type: object
+      properties:
+        deliveryCharges:
+          type: number
+          description: The amount of the delivery charges on this order
+          example: 1
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              attachmentUrl:
+                type: string
+                description: Temporary URL providing access to the specific file attachment, which can be downloaded and stored externally
+                example: example
+              attachmentId:
+                type: number
+                description: Unique identifier of an attachment for this order (e.g., an invoice image, PDF document, CSV/EDI file)
+                example: 12345
+        orderId:
+          type: string
+          description: An identifier of the order in MarginEdge, unique within this restaurant
+          example: me-order-9f3a2b
+        otherCharges:
+          type: number
+          description: The amount of other charges on this order
+          example: 1
+        vendorId:
+          type: string
+          description: An identifier of the vendor for this order in MarginEdge, unique within this restaurant
+          example: me-vendor-9f3a2b
+        tax:
+          type: number
+          description: The amount of the total tax (or PST in Canada) on this order
+          example: 1
+        vendorName:
+          type: string
+          description: Name of the vendor for this order
+          example: Sample Vendor
+        customerNumber:
+          type: string
+          description: Vendor’s customer number for this order
+          example: INV-100245
+        invoiceDate:
+          type: string
+          description: Invoice date for this order, formatted YYYY-MM-DD
+          example: '2026-05-01'
+        orderTotal:
+          type: number
+          description: The final order total reflecting any necessary handwritten adjustments, based on the configured vendor credit mode for this vendor
+          example: 42.75
+        lineItems:
+          type: array
+          items:
+            type: object
+            properties:
+              unitPrice:
+                type: number
+                description: Unit price for this vendor item and packaging on this order
+                example: 42.75
+              vendorItemCode:
+                type: string
+                description: Vendor’s item code or SKU identifying the item
+                example: example
+              quantity:
+                type: number
+                description: Quantity of this vendor item/packaging that were purchased on this order.  This value can be negative on credit memos
+                example: 3
+              linePrice:
+                type: number
+                description: Total price paid for this line item.  This value can be negative on credit memos
+                example: 42.75
+              vendorItemName:
+                type: string
+                description: Name of the vendor item purchased
+                example: Sample Vendoritem
+              companyConceptProductId:
+                type: string
+                description: Identifier of the product (unique within the company concept this restaurant belongs to) this item is assigned to in MarginEdge
+                example: me-companyconceptproduct-9f3a2b
+              categoryId:
+                type: string
+                description: Identifier of a category and populated when it’s a category-level invoice and line item level detail isn’t available
+                example: me-category-9f3a2b
+              packagingId:
+                type: string
+                description: Identifier of the packaging for this vendor item that was purchased
+                example: me-packaging-9f3a2b
+        isCredit:
+          type: boolean
+          description: Indicates whether the document is an invoice or a credit.  True = credit; false = invoice
+          example: true
+        createdDate:
+          type: string
+          description: Date the order was created in MarginEdge, formatted YYYY-MM-DD
+          example: '2026-05-01'
+        inputTaxCredits:
+          type: number
+          description: The amount of the total input tax credits (GST/HST) on this order.  This is applicable only to Canadian customers.
+          example: 1
+        invoiceNumber:
+          type: string
+          description: Vendor’s invoice number for this order
+          example: INV-100245
+        creditAmount:
+          type: number
+          description: The amount of any included credit on the order
+          example: 42.75
+        paymentAccount:
+          type: string
+          description: Name of the payment account in MarginEdge used for this order
+          example: example
+        otherDescription:
+          type: string
+          description: A description of the other charges on this order
+          example: example
+        status:
+          type: string
+          description: Current invoice status for this order.  See Glossary for more information about the valid values for this field.
+          example: PROCESSED
+    GetOrdersResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              createdDate:
+                type: string
+                description: Date the order was created in MarginEdge, formatted YYYY-MM-DD
+                example: '2026-05-01'
+              orderId:
+                type: string
+                description: An identifier of the order in MarginEdge, unique within this restaurant
+                example: me-order-9f3a2b
+              invoiceNumber:
+                type: string
+                description: Vendor’s invoice number for this order
+                example: INV-100245
+              vendorId:
+                type: string
+                description: An identifier of the vendor for this order in MarginEdge, unique within this restaurant
+                example: me-vendor-9f3a2b
+              vendorName:
+                type: string
+                description: Name of the vendor for this order
+                example: Sample Vendor
+              customerNumber:
+                type: string
+                description: Vendor’s customer number for this order
+                example: INV-100245
+              invoiceDate:
+                type: string
+                description: Invoice date for this order, formatted YYYY-MM-DD
+                example: '2026-05-01'
+              paymentAccount:
+                type: string
+                description: Name of the payment account in MarginEdge used for this order
+                example: example
+              orderTotal:
+                type: number
+                description: The final order total reflecting any necessary handwritten adjustments, based on the configured vendor credit mode for this vendor
+                example: 42.75
+              status:
+                type: string
+                description: Current invoice status for this order.  See Glossary for more information about the valid values for this field.
+                example: PROCESSED
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key issued through the MarginEdge developer portal.

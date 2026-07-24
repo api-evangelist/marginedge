@@ -1,0 +1,288 @@
+openapi: 3.0.3
+info:
+  title: MarginEdge Public Categories Restaurant Units API
+  version: 1.0.0
+  description: Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.
+  contact:
+    name: MarginEdge Developer Support
+    url: https://developer.marginedge.com/
+  x-spec-source: Derived from the published MarginEdge developer portal (developer.marginedge.com) API reference and embedded API definitions.
+servers:
+- url: https://api.marginedge.com/public
+  description: MarginEdge Public API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Restaurant Units
+  description: Restaurants, groups, and group categories you can access
+paths:
+  /restaurantUnits:
+    get:
+      operationId: getRestaurantUnits
+      summary: MarginEdge Get Restaurant Units
+      tags:
+      - Restaurant Units
+      description: Get Restaurant Units.
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAvailableRestaurantUnitsResponseModel'
+              examples:
+                GetRestaurantUnits200Example:
+                  summary: Default getRestaurantUnits 200 response
+                  x-microcks-default: true
+                  value:
+                    restaurants:
+                    - name: Sample Name
+                      id: 12345
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /restaurantUnits/groupCategories:
+    get:
+      operationId: getRestaurantUnitGroupCategories
+      summary: MarginEdge Get Restaurant Unit Group Categories
+      tags:
+      - Restaurant Units
+      description: Get Restaurant Unit Group Categories.
+      parameters:
+      - name: conceptId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupCategoriesResponseModel'
+              examples:
+                GetRestaurantUnitGroupCategories200Example:
+                  summary: Default getRestaurantUnitGroupCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    groupCategories:
+                    - companyId: 12345
+                      conceptName: Sample Concept
+                      companyName: Sample Company
+                      name: Sample Name
+                      conceptId: 12345
+                      permission: example
+                      id: me--9f3a2b
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /restaurantUnits/groups:
+    get:
+      operationId: getRestaurantUnitGroups
+      summary: MarginEdge Get Restaurant Unit Groups
+      tags:
+      - Restaurant Units
+      description: Get Restaurant Unit Groups.
+      parameters:
+      - name: conceptId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      - name: companyId
+        in: query
+        required: false
+        schema:
+          type: string
+        example: 678
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupsResponseModel'
+              examples:
+                GetRestaurantUnitGroups200Example:
+                  summary: Default getRestaurantUnitGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    groups:
+                    - companyId: 12345
+                      conceptName: Sample Concept
+                      lastModifiedDate: '2026-05-01'
+                      companyName: Sample Company
+                      name: Sample Name
+                      groupCategoryName: Sample Groupcategory
+                      conceptId: 12345
+                      id: me--9f3a2b
+                      groupCategoryId: me-groupcategory-9f3a2b
+                      units:
+                      - unitName: Sample Unit
+                        unitId: 12345
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+  schemas:
+    GetGroupsResponseModel:
+      type: object
+      properties:
+        groups:
+          type: array
+          description: List of restaurant unit groups accessible to the user
+          items:
+            type: object
+            properties:
+              companyId:
+                type: number
+                description: Unique identifier of the company this group belongs to
+                example: 12345
+              conceptName:
+                type: string
+                description: Name of the concept
+                example: Sample Concept
+              lastModifiedDate:
+                type: string
+                description: Timestamp when the group was last modified (ISO 8601 format)
+                example: '2026-05-01'
+              companyName:
+                type: string
+                description: Name of the company
+                example: Sample Company
+              name:
+                type: string
+                description: Name of the group
+                example: Sample Name
+              groupCategoryName:
+                type: string
+                description: Name of the group category (nullable)
+                example: Sample Groupcategory
+              conceptId:
+                type: number
+                description: Unique identifier of the concept this group belongs to
+                example: 12345
+              id:
+                type: string
+                description: Unique identifier for the group (UUID)
+                example: me--9f3a2b
+              groupCategoryId:
+                type: string
+                description: UUID of the group category this group belongs to (nullable)
+                example: me-groupcategory-9f3a2b
+              units:
+                type: array
+                description: List of restaurant units in this group
+                items:
+                  type: object
+                  properties:
+                    unitName:
+                      type: string
+                      description: Name of the restaurant unit
+                      example: Sample Unit
+                    unitId:
+                      type: number
+                      description: Unique identifier of the restaurant unit
+                      example: 12345
+    GetAvailableRestaurantUnitsResponseModel:
+      type: object
+      properties:
+        restaurants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the restaurant in MarginEdge
+                example: Sample Name
+              id:
+                type: number
+                description: Unique identifier of this restaurant that will be used in the request to all other API endpoints
+                example: 12345
+    GetGroupCategoriesResponseModel:
+      type: object
+      properties:
+        groupCategories:
+          type: array
+          description: List of group categories accessible to the user
+          items:
+            type: object
+            properties:
+              companyId:
+                type: number
+                description: Unique identifier of the company this category belongs to
+                example: 12345
+              conceptName:
+                type: string
+                description: Name of the concept
+                example: Sample Concept
+              companyName:
+                type: string
+                description: Name of the company
+                example: Sample Company
+              name:
+                type: string
+                description: Name of the category
+                example: Sample Name
+              conceptId:
+                type: number
+                description: Unique identifier of the concept this category belongs to
+                example: 12345
+              permission:
+                type: string
+                description: Permission level for the category (PUBLIC or RESTRICTED)
+                example: example
+              id:
+                type: string
+                description: Unique identifier for the category (UUID)
+                example: me--9f3a2b
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key issued through the MarginEdge developer portal.

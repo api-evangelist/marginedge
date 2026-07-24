@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: MarginEdge Public Categories API
+  version: 1.0.0
+  description: Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.
+  contact:
+    name: MarginEdge Developer Support
+    url: https://developer.marginedge.com/
+  x-spec-source: Derived from the published MarginEdge developer portal (developer.marginedge.com) API reference and embedded API definitions.
+servers:
+- url: https://api.marginedge.com/public
+  description: MarginEdge Public API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Categories
+  description: Accounting categories
+paths:
+  /categories:
+    get:
+      operationId: getCategories
+      summary: MarginEdge Get Categories
+      tags:
+      - Categories
+      description: Get Categories.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCategoriesResponseModel'
+              examples:
+                GetCategories200Example:
+                  summary: Default getCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    categories:
+                    - categoryType: Food
+                      accountingCode: 5010
+                      categoryName: Sample Category
+                      categoryId: me-category-9f3a2b
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+  schemas:
+    GetCategoriesResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        categories:
+          type: array
+          items:
+            type: object
+            properties:
+              categoryType:
+                type: string
+                description: Type of category (Food, Beer, Wine, Liquor, N/A Bev, Retail, Other, Labor, or a custom category type)
+                example: Food
+              accountingCode:
+                type: number
+                description: Account code for the category in the integrated accounting system
+                example: 5010
+              categoryName:
+                type: string
+                description: Name of the category in MarginEdge
+                example: Sample Category
+              categoryId:
+                type: string
+                description: Identifier of the category in MarginEdge
+                example: me-category-9f3a2b
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key issued through the MarginEdge developer portal.

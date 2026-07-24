@@ -1,0 +1,143 @@
+openapi: 3.0.3
+info:
+  title: MarginEdge Public Categories Products API
+  version: 1.0.0
+  description: Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.
+  contact:
+    name: MarginEdge Developer Support
+    url: https://developer.marginedge.com/
+  x-spec-source: Derived from the published MarginEdge developer portal (developer.marginedge.com) API reference and embedded API definitions.
+servers:
+- url: https://api.marginedge.com/public
+  description: MarginEdge Public API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Products
+  description: Products tracked in a restaurant
+paths:
+  /products:
+    get:
+      operationId: getProducts
+      summary: MarginEdge Get Products
+      tags:
+      - Products
+      description: Get Products.
+      parameters:
+      - name: restaurantUnitId
+        in: query
+        required: true
+        schema:
+          type: string
+        example: 12345
+      - name: nextPage
+        in: query
+        required: false
+        schema:
+          type: string
+        example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsResponseModel'
+              examples:
+                GetProducts200Example:
+                  summary: Default getProducts 200 response
+                  x-microcks-default: true
+                  value:
+                    nextPage: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+                    products:
+                    - centralProductId: me-centralproduct-9f3a2b
+                      latestPrice: 42.75
+                      reportByUnit: case
+                      taxExempt: true
+                      companyConceptProductId: me-companyconceptproduct-9f3a2b
+                      categories:
+                      - percentAllocation: 1
+                        categoryId: me-category-9f3a2b
+                      productName: Sample Product
+                      itemCount: 3
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: Resource not found
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+  schemas:
+    GetProductsResponseModel:
+      type: object
+      properties:
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              centralProductId:
+                type: string
+                description: Identifier of the product across all restaurants in MarginEdge, if applicable. Not all products have a central identifier.
+                example: me-centralproduct-9f3a2b
+              latestPrice:
+                type: number
+                description: Most recent price of this product based on purchasing data
+                example: 42.75
+              reportByUnit:
+                type: string
+                description: Unit that this product is reported by in MarginEdge (e.g., EACH, POUND)
+                example: case
+              taxExempt:
+                type: boolean
+                description: Indicates whether this product is marked tax exempt
+                example: true
+              companyConceptProductId:
+                type: string
+                description: Identifier of the product unique within the company concept this restaurant belongs to
+                example: me-companyconceptproduct-9f3a2b
+              categories:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    percentAllocation:
+                      type: number
+                      description: Percent allocation of the product to this category
+                      example: 1
+                    categoryId:
+                      type: string
+                      description: Identifier of a category to which this product belongs
+                      example: me-category-9f3a2b
+              productName:
+                type: string
+                description: Name of the product
+                example: Sample Product
+              itemCount:
+                type: number
+                description: Number of vendor items assigned to this product (in this restaurant)
+                example: 3
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key issued through the MarginEdge developer portal.
