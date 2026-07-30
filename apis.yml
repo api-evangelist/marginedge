@@ -8,7 +8,20 @@ description: >-
   they are permitted to access. Typical consumers include multi-unit operators building custom reporting, accounting
   groups, and business intelligence providers contracting with MarginEdge customers to deliver data services.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/marginedge.png
 tags:
   - Restaurant
   - Back Office
@@ -21,29 +34,76 @@ created: '2026-06-02'
 modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
-  - aid: marginedge:rest-api
-    name: MarginEdge Public API
-    description: >-
-      The MarginEdge Public API lets authorized developers programmatically retrieve invoice and product data from the
-      MarginEdge restaurants they are permitted to access. It is documented through the MarginEdge developer portal and
-      is commonly used by multi-unit operators, accounting groups, and business intelligence providers to pull
-      operational data into custom reporting and analytics tools.
-    humanURL: https://developer.marginedge.com/
-    baseURL: https://api.marginedge.com/public
-    tags:
-      - Invoices
-      - Products
-      - Vendors
-      - Categories
-      - Restaurant Units
-      - Reporting
-    properties:
-      - type: Documentation
-        url: https://developer.marginedge.com/
-      - type: Documentation
-        url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
-      - type: OpenAPI
-        url: openapi/marginedge-openapi.yml
+- aid: marginedge:marginedge-categories-api
+  name: MarginEdge Categories API
+  description: Accounting categories
+  humanURL: https://developer.marginedge.com/
+  baseURL: https://api.marginedge.com/public
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/marginedge-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developer.marginedge.com/
+  - type: Documentation
+    url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+- aid: marginedge:marginedge-orders-api
+  name: MarginEdge Orders API
+  description: Invoices/orders processed in MarginEdge
+  humanURL: https://developer.marginedge.com/
+  baseURL: https://api.marginedge.com/public
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/marginedge-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.marginedge.com/
+  - type: Documentation
+    url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+- aid: marginedge:marginedge-products-api
+  name: MarginEdge Products API
+  description: Products tracked in a restaurant
+  humanURL: https://developer.marginedge.com/
+  baseURL: https://api.marginedge.com/public
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/marginedge-products-api-openapi.yml
+  - type: Documentation
+    url: https://developer.marginedge.com/
+  - type: Documentation
+    url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+- aid: marginedge:marginedge-restaurant-units-api
+  name: MarginEdge Restaurant Units API
+  description: Restaurants, groups, and group categories you can access
+  humanURL: https://developer.marginedge.com/
+  baseURL: https://api.marginedge.com/public
+  tags:
+  - Restaurant Units
+  properties:
+  - type: OpenAPI
+    url: openapi/marginedge-restaurant-units-api-openapi.yml
+  - type: Documentation
+    url: https://developer.marginedge.com/
+  - type: Documentation
+    url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
+- aid: marginedge:marginedge-vendors-api
+  name: MarginEdge Vendors API
+  description: Vendors and their items and packaging
+  humanURL: https://developer.marginedge.com/
+  baseURL: https://api.marginedge.com/public
+  tags:
+  - Vendors
+  properties:
+  - type: OpenAPI
+    url: openapi/marginedge-vendors-api-openapi.yml
+  - type: Documentation
+    url: https://developer.marginedge.com/
+  - type: Documentation
+    url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
 common:
   - type: AgenticAccess
     url: agentic-access/marginedge-agentic-access.yml
