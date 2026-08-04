@@ -1,0 +1,22 @@
+{
+  "provider": "marginedge",
+  "sources": [
+    "marginedge-categories-api-openapi.yml",
+    "marginedge-orders-api-openapi.yml",
+    "marginedge-products-api-openapi.yml",
+    "marginedge-restaurant-units-api-openapi.yml",
+    "marginedge-vendors-api-openapi.yml"
+  ],
+  "outputs": [
+    "marginedge-categories-api-openapi.yml",
+    "marginedge-orders-api-openapi.yml",
+    "marginedge-products-api-openapi.yml",
+    "marginedge-restaurant-units-api-openapi.yml",
+    "marginedge-vendors-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
