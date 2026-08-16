@@ -5,7 +5,7 @@
       "source": "https://www.marginedge.com/blog/rss.xml",
       "feed_url": "https://www.marginedge.com/blog/rss.xml",
       "title": "",
-      "saved": 0,
+      "saved": 6,
       "method": "feed"
     },
     {
@@ -13,9 +13,10 @@
       "feed_url": "https://help.marginedge.com/hc/en-us",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
-  "post_count": 21,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 27,
+  "fetched": "2026-08-15T12:11:08Z"
 }
