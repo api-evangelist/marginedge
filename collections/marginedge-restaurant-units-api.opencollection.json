@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MarginEdge Public Categories Restaurant Units API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Restaurant Units",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MarginEdge Get Restaurant Units",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/restaurantUnits"
+          },
+          "docs": "Get Restaurant Units."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Restaurant Unit Group Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/restaurantUnits/groupCategories",
+            "params": [
+              {
+                "name": "conceptId",
+                "value": "678",
+                "type": "query"
+              },
+              {
+                "name": "companyId",
+                "value": "678",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Restaurant Unit Group Categories."
+        },
+        {
+          "info": {
+            "name": "MarginEdge Get Restaurant Unit Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.marginedge.com/public/restaurantUnits/groups",
+            "params": [
+              {
+                "name": "conceptId",
+                "value": "678",
+                "type": "query"
+              },
+              {
+                "name": "companyId",
+                "value": "678",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Restaurant Unit Groups."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

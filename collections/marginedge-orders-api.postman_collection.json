@@ -1,0 +1,737 @@
+{
+  "item": [
+    {
+      "id": "69128317-ccec-4df5-a5b4-db39d5217075",
+      "name": "Orders",
+      "description": {
+        "content": "Invoices/orders processed in MarginEdge",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d10e965a-b79c-4683-805e-c5b4548fede5",
+          "name": "MarginEdge Get Orders",
+          "request": {
+            "name": "MarginEdge Get Orders",
+            "description": {
+              "content": "Get Orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextPage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "restaurantUnitId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58210a06-957b-4e5d-9024-888083082ba5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPage",
+                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                    },
+                    {
+                      "key": "orderStatus",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-05-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPage\": \"eyJsYXN0SWQiOiAiMTIzNDUifQ==\",\n  \"orders\": [\n    {\n      \"createdDate\": \"2026-05-01\",\n      \"orderId\": \"me-order-9f3a2b\",\n      \"invoiceNumber\": \"INV-100245\",\n      \"vendorId\": \"me-vendor-9f3a2b\",\n      \"vendorName\": \"Sample Vendor\",\n      \"customerNumber\": \"INV-100245\",\n      \"invoiceDate\": \"2026-05-01\",\n      \"paymentAccount\": \"example\",\n      \"orderTotal\": 42.75,\n      \"status\": \"PROCESSED\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b22ef951-f793-4f0a-918f-bd0c25c138ee",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPage",
+                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                    },
+                    {
+                      "key": "orderStatus",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-05-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de1001c8-65ea-4e5f-8a5a-95dd3592a560",
+              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPage",
+                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                    },
+                    {
+                      "key": "orderStatus",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-05-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "01d27397-caa6-4cc0-a9a5-e9e03e51db16",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPage",
+                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                    },
+                    {
+                      "key": "orderStatus",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-05-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c6661b1-2f81-4e34-8349-a96de627ce84",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextPage",
+                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                    },
+                    {
+                      "key": "orderStatus",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-05-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "057e6f66-6ea2-4ee4-9402-fa5ba0a495f2",
+          "name": "MarginEdge Get Order Detail",
+          "request": {
+            "name": "MarginEdge Get Order Detail",
+            "description": {
+              "content": "Get Order Detail.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "restaurantUnitId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc4eca25-2c5f-46a9-b9c3-0e42ea189ab6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryCharges\": 1,\n  \"attachments\": [\n    {\n      \"attachmentUrl\": \"example\",\n      \"attachmentId\": 12345\n    }\n  ],\n  \"orderId\": \"me-order-9f3a2b\",\n  \"otherCharges\": 1,\n  \"vendorId\": \"me-vendor-9f3a2b\",\n  \"tax\": 1,\n  \"vendorName\": \"Sample Vendor\",\n  \"customerNumber\": \"INV-100245\",\n  \"invoiceDate\": \"2026-05-01\",\n  \"orderTotal\": 42.75,\n  \"lineItems\": [\n    {\n      \"unitPrice\": 42.75,\n      \"vendorItemCode\": \"example\",\n      \"quantity\": 3,\n      \"linePrice\": 42.75,\n      \"vendorItemName\": \"Sample Vendoritem\",\n      \"companyConceptProductId\": \"me-companyconceptproduct-9f3a2b\",\n      \"categoryId\": \"me-category-9f3a2b\",\n      \"packagingId\": \"me-packaging-9f3a2b\"\n    }\n  ],\n  \"isCredit\": true,\n  \"createdDate\": \"2026-05-01\",\n  \"inputTaxCredits\": 1,\n  \"invoiceNumber\": \"INV-100245\",\n  \"creditAmount\": 42.75,\n  \"paymentAccount\": \"example\",\n  \"otherDescription\": \"example\",\n  \"status\": \"PROCESSED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fe15f5c-1b10-476c-a0db-af47beb17bcc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea38a464-5a02-45ed-8115-398871285996",
+              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a67e48e7-c131-4e7a-9a3c-1b26642402f4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97e29fd7-e9b0-44ca-a44a-70dfe9d4f8e9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restaurantUnitId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.marginedge.com/public",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "471e2177-bdd3-4424-bdc4-9dbce24e5ab5",
+    "name": "MarginEdge Public Categories Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
