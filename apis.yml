@@ -54,6 +54,8 @@ apis:
   humanURL: https://developer.marginedge.com/
   baseURL: https://api.marginedge.com/public
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -68,6 +70,8 @@ apis:
   humanURL: https://developer.marginedge.com/
   baseURL: https://api.marginedge.com/public
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
