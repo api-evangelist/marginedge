@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: MarginEdge Public Categories Vendors API
+  title: MarginEdge Public Vendors API
   version: 1.0.0
   description: Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.
   contact:
@@ -180,6 +180,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: Resource not found
+    BadRequest:
+      description: Bad request
+    ServerError:
+      description: Internal server error
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
   schemas:
     GetVendorItemsPackagingResponseModel:
       type: object
@@ -282,15 +291,6 @@ components:
           type: string
           description: Unique key for the next page of results
           example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
-  responses:
-    NotFound:
-      description: Resource not found
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
-    ServerError:
-      description: Internal server error
-    BadRequest:
-      description: Bad request
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

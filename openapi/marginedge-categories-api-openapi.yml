@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: MarginEdge Public Categories API
   version: 1.0.0
@@ -69,12 +69,12 @@ components:
   responses:
     NotFound:
       description: Resource not found
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
-    ServerError:
-      description: Internal server error
     BadRequest:
       description: Bad request
+    ServerError:
+      description: Internal server error
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
   schemas:
     GetCategoriesResponseModel:
       type: object

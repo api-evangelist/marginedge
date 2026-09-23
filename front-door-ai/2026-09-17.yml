@@ -1,0 +1,26 @@
+# Front Door AI Index — marginedge — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: marginedge
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.marginedge.com
+  final_host: www.marginedge.com
+  ownership: own
+  owner: marginedge
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 2
+  host_score: 2
+  density: 1.7
+  words: 1176
+  tiers:
+    agentic: 0
+    core: 2
+    model: 0
+  ambiguous: 2
+  top_terms:
+    AI: 2
+    automation: 2

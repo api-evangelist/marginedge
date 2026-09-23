@@ -1,11 +1,7 @@
 {
   "provider": "marginedge",
   "sources": [
-    "marginedge-categories-api-openapi.yml",
-    "marginedge-orders-api-openapi.yml",
-    "marginedge-products-api-openapi.yml",
-    "marginedge-restaurant-units-api-openapi.yml",
-    "marginedge-vendors-api-openapi.yml"
+    "_original/marginedge-openapi.yml"
   ],
   "outputs": [
     "marginedge-categories-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "marginedge-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "marginedge-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marginedge-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marginedge-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marginedge-restaurant-units-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "marginedge-vendors-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
