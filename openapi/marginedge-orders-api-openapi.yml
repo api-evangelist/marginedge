@@ -165,12 +165,12 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    BadRequest:
-      description: Bad request
-    ServerError:
-      description: Internal server error
     Forbidden:
       description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
     NotFound:
       description: Resource not found
   schemas:

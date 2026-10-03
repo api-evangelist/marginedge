@@ -72,6 +72,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+    NotFound:
+      description: Resource not found
   schemas:
     GetProductsResponseModel:
       type: object
@@ -126,15 +135,6 @@ components:
                 type: number
                 description: Number of vendor items assigned to this product (in this restaurant)
                 example: 3
-  responses:
-    BadRequest:
-      description: Bad request
-    ServerError:
-      description: Internal server error
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
-    NotFound:
-      description: Resource not found
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

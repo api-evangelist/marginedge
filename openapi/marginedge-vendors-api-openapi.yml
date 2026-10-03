@@ -180,35 +180,16 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+    NotFound:
+      description: Resource not found
   schemas:
-    GetVendorItemsPackagingResponseModel:
-      type: object
-      properties:
-        packagings:
-          type: array
-          items:
-            type: object
-            properties:
-              unit:
-                type: string
-                description: Unit this packaging is measured in
-                example: case
-              quantity:
-                type: number
-                description: Quantity of the packaging unit present in this packaging
-                example: 3
-              packagingName:
-                type: string
-                description: Name of the packaging in MarginEdge
-                example: Sample Packaging
-              packagingId:
-                type: string
-                description: Identifier of the packaging for this vendor item that was purchased
-                example: me-packaging-9f3a2b
-        nextPage:
-          type: string
-          description: Unique key for the next page of results
-          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
     GetVendorItemsResponseModel:
       type: object
       properties:
@@ -282,15 +263,34 @@ components:
                       type: string
                       description: The vendor’s account number for this restaurant
                       example: INV-100245
-  responses:
-    BadRequest:
-      description: Bad request
-    ServerError:
-      description: Internal server error
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
-    NotFound:
-      description: Resource not found
+    GetVendorItemsPackagingResponseModel:
+      type: object
+      properties:
+        packagings:
+          type: array
+          items:
+            type: object
+            properties:
+              unit:
+                type: string
+                description: Unit this packaging is measured in
+                example: case
+              quantity:
+                type: number
+                description: Quantity of the packaging unit present in this packaging
+                example: 3
+              packagingName:
+                type: string
+                description: Name of the packaging in MarginEdge
+                example: Sample Packaging
+              packagingId:
+                type: string
+                description: Identifier of the packaging for this vendor item that was purchased
+                example: me-packaging-9f3a2b
+        nextPage:
+          type: string
+          description: Unique key for the next page of results
+          example: eyJsYXN0SWQiOiAiMTIzNDUifQ==
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

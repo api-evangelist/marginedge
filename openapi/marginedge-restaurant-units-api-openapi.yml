@@ -159,12 +159,12 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    BadRequest:
-      description: Bad request
-    ServerError:
-      description: Internal server error
     Forbidden:
       description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
     NotFound:
       description: Resource not found
   schemas:
@@ -184,43 +184,6 @@ components:
                 type: number
                 description: Unique identifier of this restaurant that will be used in the request to all other API endpoints
                 example: 12345
-    GetGroupCategoriesResponseModel:
-      type: object
-      properties:
-        groupCategories:
-          type: array
-          description: List of group categories accessible to the user
-          items:
-            type: object
-            properties:
-              companyId:
-                type: number
-                description: Unique identifier of the company this category belongs to
-                example: 12345
-              conceptName:
-                type: string
-                description: Name of the concept
-                example: Sample Concept
-              companyName:
-                type: string
-                description: Name of the company
-                example: Sample Company
-              name:
-                type: string
-                description: Name of the category
-                example: Sample Name
-              conceptId:
-                type: number
-                description: Unique identifier of the concept this category belongs to
-                example: 12345
-              permission:
-                type: string
-                description: Permission level for the category (PUBLIC or RESTRICTED)
-                example: example
-              id:
-                type: string
-                description: Unique identifier for the category (UUID)
-                example: me--9f3a2b
     GetGroupsResponseModel:
       type: object
       properties:
@@ -280,6 +243,43 @@ components:
                       type: number
                       description: Unique identifier of the restaurant unit
                       example: 12345
+    GetGroupCategoriesResponseModel:
+      type: object
+      properties:
+        groupCategories:
+          type: array
+          description: List of group categories accessible to the user
+          items:
+            type: object
+            properties:
+              companyId:
+                type: number
+                description: Unique identifier of the company this category belongs to
+                example: 12345
+              conceptName:
+                type: string
+                description: Name of the concept
+                example: Sample Concept
+              companyName:
+                type: string
+                description: Name of the company
+                example: Sample Company
+              name:
+                type: string
+                description: Name of the category
+                example: Sample Name
+              conceptId:
+                type: number
+                description: Unique identifier of the concept this category belongs to
+                example: 12345
+              permission:
+                type: string
+                description: Permission level for the category (PUBLIC or RESTRICTED)
+                example: example
+              id:
+                type: string
+                description: Unique identifier for the category (UUID)
+                example: me--9f3a2b
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

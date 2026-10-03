@@ -66,6 +66,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    ServerError:
+      description: Internal server error
+    BadRequest:
+      description: Bad request
+    NotFound:
+      description: Resource not found
   schemas:
     GetCategoriesResponseModel:
       type: object
@@ -95,15 +104,6 @@ components:
                 type: string
                 description: Identifier of the category in MarginEdge
                 example: me-category-9f3a2b
-  responses:
-    BadRequest:
-      description: Bad request
-    ServerError:
-      description: Internal server error
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
-    NotFound:
-      description: Resource not found
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
