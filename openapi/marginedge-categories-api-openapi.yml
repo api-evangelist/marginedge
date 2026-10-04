@@ -67,14 +67,14 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
     ServerError:
       description: Internal server error
-    BadRequest:
-      description: Bad request
     NotFound:
       description: Resource not found
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    BadRequest:
+      description: Bad request
   schemas:
     GetCategoriesResponseModel:
       type: object

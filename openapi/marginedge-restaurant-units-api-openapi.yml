@@ -159,31 +159,15 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
-    ServerError:
-      description: Internal server error
     BadRequest:
       description: Bad request
+    ServerError:
+      description: Internal server error
     NotFound:
       description: Resource not found
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
   schemas:
-    GetAvailableRestaurantUnitsResponseModel:
-      type: object
-      properties:
-        restaurants:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: Name of the restaurant in MarginEdge
-                example: Sample Name
-              id:
-                type: number
-                description: Unique identifier of this restaurant that will be used in the request to all other API endpoints
-                example: 12345
     GetGroupsResponseModel:
       type: object
       properties:
@@ -243,6 +227,22 @@ components:
                       type: number
                       description: Unique identifier of the restaurant unit
                       example: 12345
+    GetAvailableRestaurantUnitsResponseModel:
+      type: object
+      properties:
+        restaurants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the restaurant in MarginEdge
+                example: Sample Name
+              id:
+                type: number
+                description: Unique identifier of this restaurant that will be used in the request to all other API endpoints
+                example: 12345
     GetGroupCategoriesResponseModel:
       type: object
       properties:
