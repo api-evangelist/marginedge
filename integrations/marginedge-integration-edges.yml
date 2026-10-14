@@ -1,0 +1,61 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- 7shifts/integrations/7shifts-integration-edges.yml
+- clover/integrations/clover-integration-edges.yml
+- toast/integrations/toast-integration-edges.yml
+source:
+- 7shifts/integrations/7shifts-integration-edges.yml
+- clover/integrations/clover-integration-edges.yml
+- toast/integrations/toast-integration-edges.yml
+edges:
+- partner_name: 7shifts (own)
+  partner: 7shifts
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.7shifts.com/integrations/marginedge/
+  mirror_of: 7shifts/integrations/7shifts-integration-edges.yml
+  apps:
+  - Marginedge
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+- partner_name: Clover (own)
+  partner: clover
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.clover.com/appmarket/apps/N8BK08YAYMHFY
+  mirror_of: clover/integrations/clover-integration-edges.yml
+  apps:
+  - MarginEdge - Easy QuickBooks Connect for Restaurants
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: QUICK_SERVICE_RESTAURANT
+- partner_name: Toast (own)
+  partner: toast
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://pos.toasttab.com/partners/directory/marginedge
+  mirror_of: toast/integrations/toast-integration-edges.yml
+  apps:
+  - MarginEdge
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Inventory
