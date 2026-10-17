@@ -158,15 +158,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    BadRequest:
-      description: Bad request
-    ServerError:
-      description: Internal server error
-    NotFound:
-      description: Resource not found
-    Forbidden:
-      description: Forbidden (missing or invalid API key, or restaurant not authorized)
   schemas:
     GetGroupsResponseModel:
       type: object
@@ -280,6 +271,15 @@ components:
                 type: string
                 description: Unique identifier for the category (UUID)
                 example: me--9f3a2b
+  responses:
+    ServerError:
+      description: Internal server error
+    Forbidden:
+      description: Forbidden (missing or invalid API key, or restaurant not authorized)
+    NotFound:
+      description: Resource not found
+    BadRequest:
+      description: Bad request
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
