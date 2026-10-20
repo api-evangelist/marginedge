@@ -1,13 +1,23 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
 method: searched
-checked:
-- 7shifts/integrations/7shifts-integration-edges.yml
-- clover/integrations/clover-integration-edges.yml
-- toast/integrations/toast-integration-edges.yml
 source:
 - 7shifts/integrations/7shifts-integration-edges.yml
 - clover/integrations/clover-integration-edges.yml
 - toast/integrations/toast-integration-edges.yml
+- https://zapier.com/apps/marginedge/integrations
+- https://n8n.io/integrations/marginedge/
+- https://composio.dev/toolkits/marginedge
+- https://monid.ai/tools/marginedge
+checked:
+- 7shifts/integrations/7shifts-integration-edges.yml
+- clover/integrations/clover-integration-edges.yml
+- toast/integrations/toast-integration-edges.yml
+- https://composio.dev/toolkits/marginedge
+- https://monid.ai/tools/marginedge
+- https://n8n.io/integrations/marginedge/
+- https://zapier.com/apps/marginedge/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: 7shifts (own)
   partner: 7shifts
@@ -59,3 +69,4 @@ edges:
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
   category: Inventory
+templates: []
