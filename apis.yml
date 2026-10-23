@@ -122,6 +122,8 @@ apis:
   - type: Documentation
     url: https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/marginedge/overview
   - type: AgenticAccess
     url: agentic-access/marginedge-agentic-access.yml
   - type: TrustCenter
