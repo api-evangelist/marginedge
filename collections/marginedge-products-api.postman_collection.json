@@ -1,314 +1,294 @@
 {
+  "info": {
+    "_postman_id": "1b146aea-87ac-40f7-8e4c-374c63f67975",
+    "name": "MarginEdge Public Products API",
+    "description": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:38:16.000Z",
+    "updatedAt": "2026-10-22T01:38:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1b146aea-87ac-40f7-8e4c-374c63f67975"
+  },
   "item": [
     {
-      "id": "cfe873db-ad52-42dd-992d-112e8987ba75",
-      "name": "Products",
-      "description": {
-        "content": "Products tracked in a restaurant",
-        "type": "text/plain"
-      },
+      "name": "products",
       "item": [
         {
-          "id": "9b97e84e-b6a1-490f-bfca-617109a1d3c0",
           "name": "MarginEdge Get Products",
+          "id": "2a168416-4a38-49f9-836a-36da75d968e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "MarginEdge Get Products",
-            "description": {
-              "content": "Get Products.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "products"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "restaurantUnitId",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "nextPage",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/products?restaurantUnitId=<string>&nextPage=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "restaurantUnitId",
+                  "value": "<string>"
+                },
+                {
+                  "key": "nextPage",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Get Products."
           },
           "response": [
             {
-              "id": "edbc668a-945a-4cf8-b9dc-ddf1e2b604c3",
+              "id": "38d54aee-104e-45c0-8d9f-ab6c52a9e9d3",
               "name": "Successful response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "products"
-                  ],
+                  "raw": "{{baseUrl}}/products?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "products"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"nextPage\": \"eyJsYXN0SWQiOiAiMTIzNDUifQ==\",\n  \"products\": [\n    {\n      \"centralProductId\": \"me-centralproduct-9f3a2b\",\n      \"latestPrice\": 42.75,\n      \"reportByUnit\": \"case\",\n      \"taxExempt\": true,\n      \"companyConceptProductId\": \"me-companyconceptproduct-9f3a2b\",\n      \"categories\": [\n        {\n          \"percentAllocation\": 1,\n          \"categoryId\": \"me-category-9f3a2b\"\n        }\n      ],\n      \"productName\": \"Sample Product\",\n      \"itemCount\": 3\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"nextPage\": \"<string>\",\n  \"products\": [\n    {\n      \"centralProductId\": \"<string>\",\n      \"latestPrice\": \"<number>\",\n      \"reportByUnit\": \"<string>\",\n      \"taxExempt\": \"<boolean>\",\n      \"companyConceptProductId\": \"<string>\",\n      \"categories\": [\n        {\n          \"percentAllocation\": \"<number>\",\n          \"categoryId\": \"<string>\"\n        },\n        {\n          \"percentAllocation\": \"<number>\",\n          \"categoryId\": \"<string>\"\n        }\n      ],\n      \"productName\": \"<string>\",\n      \"itemCount\": \"<number>\"\n    },\n    {\n      \"centralProductId\": \"<string>\",\n      \"latestPrice\": \"<number>\",\n      \"reportByUnit\": \"<string>\",\n      \"taxExempt\": \"<boolean>\",\n      \"companyConceptProductId\": \"<string>\",\n      \"categories\": [\n        {\n          \"percentAllocation\": \"<number>\",\n          \"categoryId\": \"<string>\"\n        },\n        {\n          \"percentAllocation\": \"<number>\",\n          \"categoryId\": \"<string>\"\n        }\n      ],\n      \"productName\": \"<string>\",\n      \"itemCount\": \"<number>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:38:17.000Z",
+              "updatedAt": "2026-10-22T01:38:17.000Z",
+              "uid": "35240-38d54aee-104e-45c0-8d9f-ab6c52a9e9d3"
             },
             {
-              "id": "312c5a2b-49ce-46fa-a0ba-46a603f91564",
+              "id": "336116af-fce0-45b9-b117-e333055ac41f",
               "name": "Bad request",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "products"
-                  ],
+                  "raw": "{{baseUrl}}/products?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "products"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:17.000Z",
+              "updatedAt": "2026-10-22T01:38:17.000Z",
+              "uid": "35240-336116af-fce0-45b9-b117-e333055ac41f"
             },
             {
-              "id": "2daea024-69eb-44f1-a245-e48b8e988970",
+              "id": "e273549d-59f2-4ea2-aafa-4f7ed6dfe350",
               "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "products"
-                  ],
+                  "raw": "{{baseUrl}}/products?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "products"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:17.000Z",
+              "updatedAt": "2026-10-22T01:38:17.000Z",
+              "uid": "35240-e273549d-59f2-4ea2-aafa-4f7ed6dfe350"
             },
             {
-              "id": "35c36c42-46b6-4213-83c3-04d1a6dec351",
+              "id": "21799703-f2d1-4a48-8d30-69113e23022b",
               "name": "Resource not found",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "products"
-                  ],
+                  "raw": "{{baseUrl}}/products?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "products"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:17.000Z",
+              "updatedAt": "2026-10-22T01:38:17.000Z",
+              "uid": "35240-21799703-f2d1-4a48-8d30-69113e23022b"
             },
             {
-              "id": "a165d443-4900-4c9a-8694-88f24f2b57b1",
+              "id": "0c963cec-7298-4875-9e2f-a8a026720e6e",
               "name": "Internal server error",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "products"
-                  ],
+                  "raw": "{{baseUrl}}/products?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "products"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:17.000Z",
+              "updatedAt": "2026-10-22T01:38:17.000Z",
+              "uid": "35240-0c963cec-7298-4875-9e2f-a8a026720e6e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:38:17.000Z",
+          "updatedAt": "2026-10-22T01:38:17.000Z",
+          "uid": "35240-2a168416-4a38-49f9-836a-36da75d968e6"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.marginedge.com/public",
-      "key": "baseUrl"
+      "id": "c7d9fc99-1cda-41ae-92d3-d872ab1357e4",
+      "createdAt": "2026-10-22T01:38:17.000Z",
+      "updatedAt": "2026-10-22T01:38:17.000Z",
+      "uid": "35240-c7d9fc99-1cda-41ae-92d3-d872ab1357e4"
     }
   ],
   "auth": {
@@ -316,25 +296,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "cffd0180-08cf-40fb-b554-b9ac828335e6",
-    "name": "MarginEdge Public Categories Products API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.marginedge.com/public"
     }
-  }
+  ]
 }

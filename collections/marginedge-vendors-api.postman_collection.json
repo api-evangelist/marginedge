@@ -1,1045 +1,971 @@
 {
+  "info": {
+    "_postman_id": "546b185b-2cb9-4baa-9c84-ba8fdfc1598f",
+    "name": "MarginEdge Public Vendors API",
+    "description": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:38:24.000Z",
+    "updatedAt": "2026-10-22T01:38:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-546b185b-2cb9-4baa-9c84-ba8fdfc1598f"
+  },
   "item": [
     {
-      "id": "b16cb9c9-5faf-485d-8277-1a75b504b957",
-      "name": "Vendors",
-      "description": {
-        "content": "Vendors and their items and packaging",
-        "type": "text/plain"
-      },
+      "name": "vendors",
       "item": [
         {
-          "id": "2aa4d113-af8d-4b78-bf9e-40892b288478",
+          "name": "{vendorId}",
+          "item": [
+            {
+              "name": "vendorItems",
+              "item": [
+                {
+                  "name": "{vendorItemCode}",
+                  "item": [
+                    {
+                      "name": "packaging",
+                      "item": [
+                        {
+                          "name": "MarginEdge Get Vendor Items Packaging",
+                          "id": "f018cd51-40cd-49aa-affd-7295e59913a2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems/:vendorItemCode/packaging?restaurantUnitId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "vendors",
+                                ":vendorId",
+                                "vendorItems",
+                                ":vendorItemCode",
+                                "packaging"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "restaurantUnitId",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ab619a77-cf6f-4ad2-b078-dedddce69848",
+                                  "key": "vendorId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "e37fbd95-698b-45e6-a2b4-ae93dbba18b3",
+                                  "key": "vendorItemCode",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Get Vendor Items Packaging."
+                          },
+                          "response": [
+                            {
+                              "id": "3c8719b5-79c6-4901-9a56-b09b802ef602",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems/:vendorItemCode/packaging?restaurantUnitId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vendors",
+                                    ":vendorId",
+                                    "vendorItems",
+                                    ":vendorItemCode",
+                                    "packaging"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "restaurantUnitId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vendorId"
+                                    },
+                                    {
+                                      "key": "vendorItemCode"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"packagings\": [\n    {\n      \"unit\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"packagingName\": \"<string>\",\n      \"packagingId\": \"<string>\"\n    },\n    {\n      \"unit\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"packagingName\": \"<string>\",\n      \"packagingId\": \"<string>\"\n    }\n  ],\n  \"nextPage\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:38:25.000Z",
+                              "updatedAt": "2026-10-22T01:38:25.000Z",
+                              "uid": "35240-3c8719b5-79c6-4901-9a56-b09b802ef602"
+                            },
+                            {
+                              "id": "def75106-7cdd-4806-8b17-5f20003f8ed8",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems/:vendorItemCode/packaging?restaurantUnitId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vendors",
+                                    ":vendorId",
+                                    "vendorItems",
+                                    ":vendorItemCode",
+                                    "packaging"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "restaurantUnitId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vendorId"
+                                    },
+                                    {
+                                      "key": "vendorItemCode"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:38:25.000Z",
+                              "updatedAt": "2026-10-22T01:38:25.000Z",
+                              "uid": "35240-def75106-7cdd-4806-8b17-5f20003f8ed8"
+                            },
+                            {
+                              "id": "57996b6f-e48c-42e6-a205-0acd9677597e",
+                              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems/:vendorItemCode/packaging?restaurantUnitId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vendors",
+                                    ":vendorId",
+                                    "vendorItems",
+                                    ":vendorItemCode",
+                                    "packaging"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "restaurantUnitId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vendorId"
+                                    },
+                                    {
+                                      "key": "vendorItemCode"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:38:25.000Z",
+                              "updatedAt": "2026-10-22T01:38:25.000Z",
+                              "uid": "35240-57996b6f-e48c-42e6-a205-0acd9677597e"
+                            },
+                            {
+                              "id": "a296b36f-3612-43ea-82d1-91e48e62f068",
+                              "name": "Resource not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems/:vendorItemCode/packaging?restaurantUnitId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vendors",
+                                    ":vendorId",
+                                    "vendorItems",
+                                    ":vendorItemCode",
+                                    "packaging"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "restaurantUnitId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vendorId"
+                                    },
+                                    {
+                                      "key": "vendorItemCode"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:38:25.000Z",
+                              "updatedAt": "2026-10-22T01:38:25.000Z",
+                              "uid": "35240-a296b36f-3612-43ea-82d1-91e48e62f068"
+                            },
+                            {
+                              "id": "c3b0290e-294d-4214-aeee-46fa21aeec3b",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems/:vendorItemCode/packaging?restaurantUnitId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "vendors",
+                                    ":vendorId",
+                                    "vendorItems",
+                                    ":vendorItemCode",
+                                    "packaging"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "restaurantUnitId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vendorId"
+                                    },
+                                    {
+                                      "key": "vendorItemCode"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:38:25.000Z",
+                              "updatedAt": "2026-10-22T01:38:25.000Z",
+                              "uid": "35240-c3b0290e-294d-4214-aeee-46fa21aeec3b"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:38:25.000Z",
+                          "updatedAt": "2026-10-22T01:38:25.000Z",
+                          "uid": "35240-f018cd51-40cd-49aa-affd-7295e59913a2"
+                        }
+                      ],
+                      "id": "450905f7-b5fb-4bdc-8d59-3541b0151ee6",
+                      "createdAt": "2026-10-22T01:38:25.000Z",
+                      "updatedAt": "2026-10-22T01:38:25.000Z",
+                      "uid": "35240-450905f7-b5fb-4bdc-8d59-3541b0151ee6"
+                    }
+                  ],
+                  "id": "5dbeb66b-e681-424c-b072-13ee4e001b32",
+                  "createdAt": "2026-10-22T01:38:25.000Z",
+                  "updatedAt": "2026-10-22T01:38:25.000Z",
+                  "uid": "35240-5dbeb66b-e681-424c-b072-13ee4e001b32"
+                },
+                {
+                  "name": "MarginEdge Get Vendor Items",
+                  "id": "b9813791-d992-4fd0-8307-251eeb4161fc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems?restaurantUnitId=<string>&nextPage=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "vendors",
+                        ":vendorId",
+                        "vendorItems"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "restaurantUnitId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "nextPage",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b77ba034-74de-4eb4-8e7c-c5f397032d09",
+                          "key": "vendorId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get Vendor Items."
+                  },
+                  "response": [
+                    {
+                      "id": "1a10a4a4-2541-44f0-bdd6-777a52989f7e",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems?restaurantUnitId=<string>&nextPage=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vendors",
+                            ":vendorId",
+                            "vendorItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "restaurantUnitId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "nextPage",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "vendorId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"vendorItems\": [\n    {\n      \"vendorItemCode\": \"<string>\",\n      \"centralVendorItemId\": \"<string>\",\n      \"vendorId\": \"<string>\",\n      \"companyConceptProductId\": \"<string>\",\n      \"vendorName\": \"<string>\",\n      \"centralVendorId\": \"<string>\",\n      \"productName\": \"<string>\"\n    },\n    {\n      \"vendorItemCode\": \"<string>\",\n      \"centralVendorItemId\": \"<string>\",\n      \"vendorId\": \"<string>\",\n      \"companyConceptProductId\": \"<string>\",\n      \"vendorName\": \"<string>\",\n      \"centralVendorId\": \"<string>\",\n      \"productName\": \"<string>\"\n    }\n  ],\n  \"nextPage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:38:25.000Z",
+                      "updatedAt": "2026-10-22T01:38:25.000Z",
+                      "uid": "35240-1a10a4a4-2541-44f0-bdd6-777a52989f7e"
+                    },
+                    {
+                      "id": "dce204bb-312f-4a85-b590-829a75f44354",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems?restaurantUnitId=<string>&nextPage=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vendors",
+                            ":vendorId",
+                            "vendorItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "restaurantUnitId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "nextPage",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "vendorId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:38:25.000Z",
+                      "updatedAt": "2026-10-22T01:38:25.000Z",
+                      "uid": "35240-dce204bb-312f-4a85-b590-829a75f44354"
+                    },
+                    {
+                      "id": "b5864f2d-1c24-4423-9313-e3392a134018",
+                      "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems?restaurantUnitId=<string>&nextPage=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vendors",
+                            ":vendorId",
+                            "vendorItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "restaurantUnitId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "nextPage",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "vendorId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:38:25.000Z",
+                      "updatedAt": "2026-10-22T01:38:25.000Z",
+                      "uid": "35240-b5864f2d-1c24-4423-9313-e3392a134018"
+                    },
+                    {
+                      "id": "e2a53f92-7c59-43e1-bfe4-b11ec83a0f5e",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems?restaurantUnitId=<string>&nextPage=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vendors",
+                            ":vendorId",
+                            "vendorItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "restaurantUnitId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "nextPage",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "vendorId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:38:25.000Z",
+                      "updatedAt": "2026-10-22T01:38:25.000Z",
+                      "uid": "35240-e2a53f92-7c59-43e1-bfe4-b11ec83a0f5e"
+                    },
+                    {
+                      "id": "d383f7ed-bfcf-4df7-b14f-a7081b74f502",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/vendors/:vendorId/vendorItems?restaurantUnitId=<string>&nextPage=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "vendors",
+                            ":vendorId",
+                            "vendorItems"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "restaurantUnitId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "nextPage",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "vendorId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:38:25.000Z",
+                      "updatedAt": "2026-10-22T01:38:25.000Z",
+                      "uid": "35240-d383f7ed-bfcf-4df7-b14f-a7081b74f502"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:38:25.000Z",
+                  "updatedAt": "2026-10-22T01:38:25.000Z",
+                  "uid": "35240-b9813791-d992-4fd0-8307-251eeb4161fc"
+                }
+              ],
+              "id": "5cd1cbb8-7412-4547-b603-df49ffd88cdb",
+              "createdAt": "2026-10-22T01:38:25.000Z",
+              "updatedAt": "2026-10-22T01:38:25.000Z",
+              "uid": "35240-5cd1cbb8-7412-4547-b603-df49ffd88cdb"
+            }
+          ],
+          "id": "fc76dcdf-abf9-4128-ad87-aa06bb04b0c7",
+          "createdAt": "2026-10-22T01:38:25.000Z",
+          "updatedAt": "2026-10-22T01:38:25.000Z",
+          "uid": "35240-fc76dcdf-abf9-4128-ad87-aa06bb04b0c7"
+        },
+        {
           "name": "MarginEdge Get Vendors",
+          "id": "f2511a3a-5e40-4b19-9dd5-ab650e3e20c7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "MarginEdge Get Vendors",
-            "description": {
-              "content": "Get Vendors.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/vendors?restaurantUnitId=<string>&nextPage=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "vendors"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "(Required) ",
                   "key": "restaurantUnitId",
-                  "value": "<string>",
-                  "description": "(Required) "
+                  "value": "<string>"
                 },
                 {
-                  "disabled": false,
                   "key": "nextPage",
                   "value": "<string>"
                 }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "34131fbb-002a-46c9-b2d4-6548dda3aa5f",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"nextPage\": \"eyJsYXN0SWQiOiAiMTIzNDUifQ==\",\n  \"vendors\": [\n    {\n      \"vendorId\": \"me-vendor-9f3a2b\",\n      \"vendorName\": \"Sample Vendor\",\n      \"centralVendorId\": \"me-centralvendor-9f3a2b\",\n      \"vendorAccounts\": [\n        {\n          \"vendorAccountNumber\": \"INV-100245\"\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1705a85f-b4d7-4fd4-89ca-8baa59bd8d30",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "714991b3-53fc-4838-afae-92d7c538209f",
-              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f5519ef7-11c8-4759-a75d-2c7a4ad628e9",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8e08b93c-54fd-40c8-afd0-2ac11ab27ef5",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4f87a78d-def4-4973-a264-3dfb72383e72",
-          "name": "MarginEdge Get Vendor Items",
-          "request": {
-            "name": "MarginEdge Get Vendor Items",
-            "description": {
-              "content": "Get Vendor Items.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "vendors",
-                ":vendorId",
-                "vendorItems"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "restaurantUnitId",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "nextPage",
-                  "value": "<string>"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "vendorId",
-                  "description": "(Required) "
-                }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Get Vendors."
           },
           "response": [
             {
-              "id": "6a15a115-79c3-4ec3-b575-ceff567b2131",
+              "id": "4e16c966-deba-4355-aa86-48e8b3563220",
               "name": "Successful response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems"
-                  ],
+                  "raw": "{{baseUrl}}/vendors?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "vendors"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"vendorItems\": [\n    {\n      \"vendorItemCode\": \"example\",\n      \"centralVendorItemId\": \"me-centralvendoritem-9f3a2b\",\n      \"vendorId\": \"me-vendor-9f3a2b\",\n      \"companyConceptProductId\": \"me-companyconceptproduct-9f3a2b\",\n      \"vendorName\": \"Sample Vendor\",\n      \"centralVendorId\": \"me-centralvendor-9f3a2b\",\n      \"productName\": \"Sample Product\"\n    }\n  ],\n  \"nextPage\": \"eyJsYXN0SWQiOiAiMTIzNDUifQ==\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"nextPage\": \"<string>\",\n  \"vendors\": [\n    {\n      \"vendorId\": \"<string>\",\n      \"vendorName\": \"<string>\",\n      \"centralVendorId\": \"<string>\",\n      \"vendorAccounts\": [\n        {\n          \"vendorAccountNumber\": \"<string>\"\n        },\n        {\n          \"vendorAccountNumber\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"vendorId\": \"<string>\",\n      \"vendorName\": \"<string>\",\n      \"centralVendorId\": \"<string>\",\n      \"vendorAccounts\": [\n        {\n          \"vendorAccountNumber\": \"<string>\"\n        },\n        {\n          \"vendorAccountNumber\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:38:25.000Z",
+              "updatedAt": "2026-10-22T01:38:25.000Z",
+              "uid": "35240-4e16c966-deba-4355-aa86-48e8b3563220"
             },
             {
-              "id": "97f90724-39f0-4d8b-9e32-d8efc0a5f92f",
+              "id": "1df008e5-e83b-4660-8ce5-99ce9a58c09c",
               "name": "Bad request",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems"
-                  ],
+                  "raw": "{{baseUrl}}/vendors?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "vendors"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:25.000Z",
+              "updatedAt": "2026-10-22T01:38:25.000Z",
+              "uid": "35240-1df008e5-e83b-4660-8ce5-99ce9a58c09c"
             },
             {
-              "id": "3e661aff-9b9f-4aa6-afd8-fce70cfd3cc3",
+              "id": "5420c6c4-1b72-4af6-99c3-df29ef11ccc8",
               "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems"
-                  ],
+                  "raw": "{{baseUrl}}/vendors?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "vendors"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Forbidden",
               "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:25.000Z",
+              "updatedAt": "2026-10-22T01:38:25.000Z",
+              "uid": "35240-5420c6c4-1b72-4af6-99c3-df29ef11ccc8"
             },
             {
-              "id": "413abdbf-badb-4d6a-8e60-a134bd4bfadb",
+              "id": "52d440af-16dd-4207-b334-647232594568",
               "name": "Resource not found",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems"
-                  ],
+                  "raw": "{{baseUrl}}/vendors?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "vendors"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
+                      "value": "<string>"
                     }
                   ]
-                },
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:25.000Z",
+              "updatedAt": "2026-10-22T01:38:25.000Z",
+              "uid": "35240-52d440af-16dd-4207-b334-647232594568"
+            },
+            {
+              "id": "0a26f214-5482-4701-8d41-26a9c565a802",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "x-api-key",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0f59f8fc-4d83-46cd-bd4f-1a3ba6bf9796",
-              "name": "Internal server error",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems"
-                  ],
+                  "raw": "{{baseUrl}}/vendors?restaurantUnitId=<string>&nextPage=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "vendors"
+                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "restaurantUnitId",
                       "value": "<string>"
                     },
                     {
                       "key": "nextPage",
-                      "value": "eyJsYXN0SWQiOiAiMTIzNDUifQ=="
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:25.000Z",
+              "updatedAt": "2026-10-22T01:38:25.000Z",
+              "uid": "35240-0a26f214-5482-4701-8d41-26a9c565a802"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "34562665-e132-471f-b2fe-a94f29f06e9a",
-          "name": "MarginEdge Get Vendor Items Packaging",
-          "request": {
-            "name": "MarginEdge Get Vendor Items Packaging",
-            "description": {
-              "content": "Get Vendor Items Packaging.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "vendors",
-                ":vendorId",
-                "vendorItems",
-                ":vendorItemCode",
-                "packaging"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "restaurantUnitId",
-                  "value": "<string>",
-                  "description": "(Required) "
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "vendorId",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "vendorItemCode",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "45f701ef-b90e-4e7d-89c9-b9fb8ab85f1e",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems",
-                    ":vendorItemCode",
-                    "packaging"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorItemCode",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"packagings\": [\n    {\n      \"unit\": \"case\",\n      \"quantity\": 3,\n      \"packagingName\": \"Sample Packaging\",\n      \"packagingId\": \"me-packaging-9f3a2b\"\n    }\n  ],\n  \"nextPage\": \"eyJsYXN0SWQiOiAiMTIzNDUifQ==\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5d85e466-f1ee-43ad-9268-c2867bcc6d02",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems",
-                    ":vendorItemCode",
-                    "packaging"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorItemCode",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ff496d72-3000-4428-8a76-b6e6cf5ff913",
-              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems",
-                    ":vendorItemCode",
-                    "packaging"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorItemCode",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "27be07c0-bcee-4925-af80-9531a0a38d7c",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems",
-                    ":vendorItemCode",
-                    "packaging"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorItemCode",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6360553b-ccd8-4c55-a27f-09543b51fb61",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "vendors",
-                    ":vendorId",
-                    "vendorItems",
-                    ":vendorItemCode",
-                    "packaging"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "restaurantUnitId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorId",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "vendorItemCode",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:38:25.000Z",
+          "updatedAt": "2026-10-22T01:38:25.000Z",
+          "uid": "35240-f2511a3a-5e40-4b19-9dd5-ab650e3e20c7"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.marginedge.com/public",
-      "key": "baseUrl"
+      "id": "ee9605ba-616a-4486-8a70-1074a58fb69d",
+      "createdAt": "2026-10-22T01:38:25.000Z",
+      "updatedAt": "2026-10-22T01:38:25.000Z",
+      "uid": "35240-ee9605ba-616a-4486-8a70-1074a58fb69d"
     }
   ],
   "auth": {
@@ -1047,25 +973,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "7481d51e-15e8-4b45-8fea-5c741719dd40",
-    "name": "MarginEdge Public Categories Vendors API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.marginedge.com/public"
     }
-  }
+  ]
 }

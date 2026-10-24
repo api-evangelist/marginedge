@@ -1,849 +1,788 @@
 {
+  "info": {
+    "_postman_id": "aa78e865-6882-4164-976b-5fcfc21ecfa1",
+    "name": "MarginEdge Public Restaurant Units API",
+    "description": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:38:21.000Z",
+    "updatedAt": "2026-10-22T01:38:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa78e865-6882-4164-976b-5fcfc21ecfa1"
+  },
   "item": [
     {
-      "id": "77cb9c26-94bd-4885-a02f-bc986137983e",
-      "name": "Restaurant Units",
-      "description": {
-        "content": "Restaurants, groups, and group categories you can access",
-        "type": "text/plain"
-      },
+      "name": "restaurantUnits",
       "item": [
         {
-          "id": "34ef2742-fb50-4172-b0bc-ba7253f4fa76",
+          "name": "groupCategories",
+          "item": [
+            {
+              "name": "MarginEdge Get Restaurant Unit Group Categories",
+              "id": "81bb6b4c-90c2-42d2-84ec-d169fa725851",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits/groupCategories?conceptId=<string>&companyId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurantUnits",
+                    "groupCategories"
+                  ],
+                  "query": [
+                    {
+                      "key": "conceptId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Get Restaurant Unit Group Categories."
+              },
+              "response": [
+                {
+                  "id": "a3a9d6e0-9cd0-4efd-b157-ddbc8519877d",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groupCategories?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groupCategories"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"groupCategories\": [\n    {\n      \"companyId\": \"<number>\",\n      \"conceptName\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"conceptId\": \"<number>\",\n      \"permission\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"companyId\": \"<number>\",\n      \"conceptName\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"conceptId\": \"<number>\",\n      \"permission\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-a3a9d6e0-9cd0-4efd-b157-ddbc8519877d"
+                },
+                {
+                  "id": "c93a3509-fa86-4530-a86e-412886a50778",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groupCategories?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groupCategories"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-c93a3509-fa86-4530-a86e-412886a50778"
+                },
+                {
+                  "id": "59e2a80c-e208-49a7-993c-1805aaf93270",
+                  "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groupCategories?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groupCategories"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-59e2a80c-e208-49a7-993c-1805aaf93270"
+                },
+                {
+                  "id": "1f6732f5-25dc-40b6-8785-3f66f2bdf298",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groupCategories?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groupCategories"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-1f6732f5-25dc-40b6-8785-3f66f2bdf298"
+                },
+                {
+                  "id": "58154929-3dc7-4bb2-ac6e-fd582ffa15d6",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groupCategories?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groupCategories"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-58154929-3dc7-4bb2-ac6e-fd582ffa15d6"
+                }
+              ],
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-81bb6b4c-90c2-42d2-84ec-d169fa725851"
+            }
+          ],
+          "id": "cd3f1205-daa8-442f-96c5-58a6c7ffef12",
+          "createdAt": "2026-10-22T01:38:21.000Z",
+          "updatedAt": "2026-10-22T01:38:21.000Z",
+          "uid": "35240-cd3f1205-daa8-442f-96c5-58a6c7ffef12"
+        },
+        {
+          "name": "groups",
+          "item": [
+            {
+              "name": "MarginEdge Get Restaurant Unit Groups",
+              "id": "02b316d9-c2e4-46be-85d4-05b6f6ae848b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits/groups?conceptId=<string>&companyId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurantUnits",
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "key": "conceptId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Get Restaurant Unit Groups."
+              },
+              "response": [
+                {
+                  "id": "853219d6-f5b2-413f-bbaa-27d8f2944323",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groups?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"groups\": [\n    {\n      \"companyId\": \"<number>\",\n      \"conceptName\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"groupCategoryName\": \"<string>\",\n      \"conceptId\": \"<number>\",\n      \"id\": \"<string>\",\n      \"groupCategoryId\": \"<string>\",\n      \"units\": [\n        {\n          \"unitName\": \"<string>\",\n          \"unitId\": \"<number>\"\n        },\n        {\n          \"unitName\": \"<string>\",\n          \"unitId\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"companyId\": \"<number>\",\n      \"conceptName\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"groupCategoryName\": \"<string>\",\n      \"conceptId\": \"<number>\",\n      \"id\": \"<string>\",\n      \"groupCategoryId\": \"<string>\",\n      \"units\": [\n        {\n          \"unitName\": \"<string>\",\n          \"unitId\": \"<number>\"\n        },\n        {\n          \"unitName\": \"<string>\",\n          \"unitId\": \"<number>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-853219d6-f5b2-413f-bbaa-27d8f2944323"
+                },
+                {
+                  "id": "dc2cf939-2a3c-497b-8495-2d0cec6c2828",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groups?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-dc2cf939-2a3c-497b-8495-2d0cec6c2828"
+                },
+                {
+                  "id": "608eaaa3-9209-4c1d-aa63-bf37819a1b69",
+                  "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groups?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-608eaaa3-9209-4c1d-aa63-bf37819a1b69"
+                },
+                {
+                  "id": "b40b4252-108b-4dbb-8736-730911f4a671",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groups?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-b40b4252-108b-4dbb-8736-730911f4a671"
+                },
+                {
+                  "id": "a94b3bf4-0fb1-4239-a7d5-05c9bd984d5b",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "x-api-key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/restaurantUnits/groups?conceptId=<string>&companyId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "restaurantUnits",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "key": "conceptId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "companyId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:38:21.000Z",
+                  "updatedAt": "2026-10-22T01:38:21.000Z",
+                  "uid": "35240-a94b3bf4-0fb1-4239-a7d5-05c9bd984d5b"
+                }
+              ],
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-02b316d9-c2e4-46be-85d4-05b6f6ae848b"
+            }
+          ],
+          "id": "5e70c365-4a39-4c7d-bac2-aa0b1118e311",
+          "createdAt": "2026-10-22T01:38:21.000Z",
+          "updatedAt": "2026-10-22T01:38:21.000Z",
+          "uid": "35240-5e70c365-4a39-4c7d-bac2-aa0b1118e311"
+        },
+        {
           "name": "MarginEdge Get Restaurant Units",
+          "id": "2d4a5ff9-3d37-41f6-9033-100ceb24a8b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "MarginEdge Get Restaurant Units",
-            "description": {
-              "content": "Get Restaurant Units.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/restaurantUnits",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "restaurantUnits"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Get Restaurant Units."
           },
           "response": [
             {
-              "id": "737560a3-fb87-4a87-9b32-dfb534eb07f3",
+              "id": "e97d6f31-bb15-411a-a9d3-184f1a02ecc2",
               "name": "Successful response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurantUnits"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"restaurants\": [\n    {\n      \"name\": \"Sample Name\",\n      \"id\": 12345\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"restaurants\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<number>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-e97d6f31-bb15-411a-a9d3-184f1a02ecc2"
             },
             {
-              "id": "05682760-f35d-4e36-a37c-5a4553dfb945",
+              "id": "acfe9210-5d67-4125-9f2d-372280c3d0a6",
               "name": "Bad request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "x-api-key",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurantUnits"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-acfe9210-5d67-4125-9f2d-372280c3d0a6"
             },
             {
-              "id": "34bd4171-fe05-4bcb-8f83-d8018acbff4c",
+              "id": "c4156824-f11a-46de-ad30-225b94dd07f3",
               "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "x-api-key",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurantUnits"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-c4156824-f11a-46de-ad30-225b94dd07f3"
             },
             {
-              "id": "ee1603e2-980b-45e8-9a5c-338287142a50",
+              "id": "5c1e210a-6d72-4fdb-9d08-ed2f8f32c97f",
               "name": "Resource not found",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "restaurantUnits"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-5c1e210a-6d72-4fdb-9d08-ed2f8f32c97f"
+            },
+            {
+              "id": "d4e83f7d-5fca-4364-9608-251ed9833329",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "x-api-key",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ebfc7f5b-8f7e-4f55-ae46-899c8be7dfad",
-              "name": "Internal server error",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/restaurantUnits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "restaurantUnits"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:38:21.000Z",
+              "updatedAt": "2026-10-22T01:38:21.000Z",
+              "uid": "35240-d4e83f7d-5fca-4364-9608-251ed9833329"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a7e39d4a-f096-4381-8407-2ffd660165d5",
-          "name": "MarginEdge Get Restaurant Unit Group Categories",
-          "request": {
-            "name": "MarginEdge Get Restaurant Unit Group Categories",
-            "description": {
-              "content": "Get Restaurant Unit Group Categories.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "restaurantUnits",
-                "groupCategories"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "conceptId",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "companyId",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f9e9d9c8-4927-46a7-8833-095a4257398a",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groupCategories"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"groupCategories\": [\n    {\n      \"companyId\": 12345,\n      \"conceptName\": \"Sample Concept\",\n      \"companyName\": \"Sample Company\",\n      \"name\": \"Sample Name\",\n      \"conceptId\": 12345,\n      \"permission\": \"example\",\n      \"id\": \"me--9f3a2b\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3c4bd6c8-3d07-4610-8ecf-1cd6f4018fa0",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groupCategories"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5520294f-3478-4bbe-8c1f-67a8cade36f4",
-              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groupCategories"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1a52e1b0-84f7-4643-86ef-5c4bb09adf13",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groupCategories"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9fb974f1-9ce8-4938-b9d2-ed8d51a26ccd",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groupCategories"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "276c1ed6-6b80-44ca-afda-6509492ca93c",
-          "name": "MarginEdge Get Restaurant Unit Groups",
-          "request": {
-            "name": "MarginEdge Get Restaurant Unit Groups",
-            "description": {
-              "content": "Get Restaurant Unit Groups.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "restaurantUnits",
-                "groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "conceptId",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "companyId",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "16fc78a2-f8cf-45ca-8e5f-fb295c4e69eb",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"groups\": [\n    {\n      \"companyId\": 12345,\n      \"conceptName\": \"Sample Concept\",\n      \"lastModifiedDate\": \"2026-05-01\",\n      \"companyName\": \"Sample Company\",\n      \"name\": \"Sample Name\",\n      \"groupCategoryName\": \"Sample Groupcategory\",\n      \"conceptId\": 12345,\n      \"id\": \"me--9f3a2b\",\n      \"groupCategoryId\": \"me-groupcategory-9f3a2b\",\n      \"units\": [\n        {\n          \"unitName\": \"Sample Unit\",\n          \"unitId\": 12345\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "63fc4440-2054-40f2-ab4a-c94656455561",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9e197a13-3e8f-4aa5-a8dd-1e1f7dfe5673",
-              "name": "Forbidden (missing or invalid API key, or restaurant not authorized)",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ebaafed2-9b01-47b3-8f92-67f409bd12c2",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "550999b3-4d85-4e5b-a018-2913bfeb7796",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "restaurantUnits",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "conceptId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "companyId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "x-api-key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:38:21.000Z",
+          "updatedAt": "2026-10-22T01:38:21.000Z",
+          "uid": "35240-2d4a5ff9-3d37-41f6-9033-100ceb24a8b7"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.marginedge.com/public",
-      "key": "baseUrl"
+      "id": "fca6ec17-d916-47cb-bbc4-bdebb18c5798",
+      "createdAt": "2026-10-22T01:38:21.000Z",
+      "updatedAt": "2026-10-22T01:38:21.000Z",
+      "uid": "35240-fca6ec17-d916-47cb-bbc4-bdebb18c5798"
     }
   ],
   "auth": {
@@ -851,25 +790,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "x-api-key"
+        "value": "x-api-key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "41d45073-c9c5-4420-b3a4-71a26e2b0e60",
-    "name": "MarginEdge Public Categories Restaurant Units API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Read-only public API for retrieving invoice, order, product, vendor, category, and restaurant-unit data from the MarginEdge restaurants you are authorized to access. The API supports one-way data retrieval only (MarginEdge to your application) and is included with any MarginEdge subscription. Authentication uses an API key sent in the x-api-key header. List responses are paged via an opaque nextPage cursor.\n\nContact Support:\n Name: MarginEdge Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.marginedge.com/public"
     }
-  }
+  ]
 }
