@@ -1,4 +1,4 @@
-# MarginEdge (marginedge)
+# MarginEdge
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,67 +66,198 @@
 
 MarginEdge is a restaurant back-office platform that automates invoice processing, inventory, recipe costing, and bill payment, syncing daily food cost and sales data into a restaurant's accounting system. Founded in 2015, it serves over 7,000 restaurants across all 50 states. For developers, MarginEdge publishes a public API through a dedicated developer portal that lets authorized parties programmatically retrieve invoice and product data from the restaurants they are permitted to access. Typical consumers include multi-unit operators building custom reporting, accounting groups, and business intelligence providers contracting with MarginEdge customers to deliver data services.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/marginedge/refs/heads/main/apis.yml)
+**Areas:** Restaurant · Back Office · Invoices · Inventory · Accounting · Reporting
 
-## Scope
+## MarginEdge on APIs.io
 
-- **Type:** Index
+Everything profiled for MarginEdge is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/marginedge/](https://apis.io/providers/marginedge/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Restaurant
-- Back Office
-- Invoices
-- Inventory
-- Accounting
-- Reporting
+- [MarginEdge Categories API](https://apis.io/apis/marginedge/marginedge-categories-api/) — Accounting categories
+- [MarginEdge Orders API](https://apis.io/apis/marginedge/marginedge-orders-api/) — Invoices/orders processed in MarginEdge
+- [MarginEdge Products API](https://apis.io/apis/marginedge/marginedge-products-api/) — Products tracked in a restaurant
+- [MarginEdge Restaurant Units API](https://apis.io/apis/marginedge/marginedge-restaurant-units-api/) — Restaurants, groups, and group categories you can access
+- [MarginEdge Vendors API](https://apis.io/apis/marginedge/marginedge-vendors-api/) — Vendors and their items and packaging
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-06-02
-- **Modified:** 2026-06-02
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### MarginEdge Public API
+Model Context Protocol servers that expose the API to agents.
 
-The MarginEdge Public API lets authorized developers programmatically retrieve invoice and product data from the MarginEdge restaurants they are permitted to access. It is documented through the MarginEdge developer portal and is commonly used by multi-unit operators, accounting groups, and business intelligence providers to pull operational data into custom reporting and analytics tools.
+- [marginedge](https://apis.io/servers/marginedge/marginedge/)
 
-- **Human URL:** [https://developer.marginedge.com/](https://developer.marginedge.com/)
-- **Base URL:** `https://api.marginedge.com/public`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Invoices
-- Products
-- Vendors
-- Categories
-- Restaurant Units
-- Reporting
+- [Marginedge Agentic Access](https://apis.io/agentic-access/marginedge/marginedge-agentic-access/)
 
-#### Properties
+#### JSON Schema (10)
 
-- [Documentation](https://developer.marginedge.com/)
-- [Documentation](https://help.marginedge.com/hc/en-us/articles/28081506932499-MarginEdge-Public-API)
-- [OpenAPI](openapi/marginedge-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/marginedge.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/marginedge.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-## Common Properties
+- [GetAvailableRestaurantUnitsResponseModel](https://apis.io/schemas/marginedge/public-api-get-available-restaurant-units-response-model/)
+- [GetCategoriesResponseModel](https://apis.io/schemas/marginedge/public-api-get-categories-response-model/)
+- [GetGroupCategoriesResponseModel](https://apis.io/schemas/marginedge/public-api-get-group-categories-response-model/)
+- [GetGroupsResponseModel](https://apis.io/schemas/marginedge/public-api-get-groups-response-model/)
+- [GetOrderDetailResponseModel](https://apis.io/schemas/marginedge/public-api-get-order-detail-response-model/)
+- [GetOrdersResponseModel](https://apis.io/schemas/marginedge/public-api-get-orders-response-model/)
+- [GetProductsResponseModel](https://apis.io/schemas/marginedge/public-api-get-products-response-model/)
+- [GetVendorItemsPackagingResponseModel](https://apis.io/schemas/marginedge/public-api-get-vendor-items-packaging-response-model/)
+- [GetVendorItemsResponseModel](https://apis.io/schemas/marginedge/public-api-get-vendor-items-response-model/)
+- [GetVendorsResponseModel](https://apis.io/schemas/marginedge/public-api-get-vendors-response-model/)
+
+#### JSON Structure (10)
+
+Data models expressed in JSON Structure.
+
+- [Public Api Get Available Restaurant Units Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-available-restaurant-units-response-model-structure/)
+- [Public Api Get Categories Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-categories-response-model-structure/)
+- [Public Api Get Group Categories Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-group-categories-response-model-structure/)
+- [Public Api Get Groups Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-groups-response-model-structure/)
+- [Public Api Get Order Detail Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-order-detail-response-model-structure/)
+- [Public Api Get Orders Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-orders-response-model-structure/)
+- [Public Api Get Products Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-products-response-model-structure/)
+- [Public Api Get Vendor Items Packaging Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-vendor-items-packaging-response-model-structure/)
+- [Public Api Get Vendor Items Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-vendor-items-response-model-structure/)
+- [Public Api Get Vendors Response Model Structure](https://apis.io/json-structure/marginedge/public-api-get-vendors-response-model-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Marginedge Context](https://apis.io/jsonld/marginedge/marginedge-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Marginedge Vocabulary](https://apis.io/vocabularies/marginedge/marginedge-vocabulary/)
+
+#### Examples (10)
+
+Example requests and responses.
+
+- [Public Api Get Available Restaurant Units Response Model Example](https://apis.io/examples/marginedge/public-api-get-available-restaurant-units-response-model-example/)
+- [Public Api Get Categories Response Model Example](https://apis.io/examples/marginedge/public-api-get-categories-response-model-example/)
+- [Public Api Get Group Categories Response Model Example](https://apis.io/examples/marginedge/public-api-get-group-categories-response-model-example/)
+- [Public Api Get Groups Response Model Example](https://apis.io/examples/marginedge/public-api-get-groups-response-model-example/)
+- [Public Api Get Order Detail Response Model Example](https://apis.io/examples/marginedge/public-api-get-order-detail-response-model-example/)
+- [Public Api Get Orders Response Model Example](https://apis.io/examples/marginedge/public-api-get-orders-response-model-example/)
+- [Public Api Get Products Response Model Example](https://apis.io/examples/marginedge/public-api-get-products-response-model-example/)
+- [Public Api Get Vendor Items Packaging Response Model Example](https://apis.io/examples/marginedge/public-api-get-vendor-items-packaging-response-model-example/)
+- [Public Api Get Vendor Items Response Model Example](https://apis.io/examples/marginedge/public-api-get-vendor-items-response-model-example/)
+- [Public Api Get Vendors Response Model Example](https://apis.io/examples/marginedge/public-api-get-vendors-response-model-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [MarginEdge Public API](https://apis.io/collections/marginedge/open-marginedge/)
+- [MarginEdge Public Categories API](https://apis.io/collections/marginedge/open-marginedge-categories-api/)
+- [MarginEdge Public Categories Orders API](https://apis.io/collections/marginedge/open-marginedge-orders-api/)
+- [MarginEdge Public Categories Products API](https://apis.io/collections/marginedge/open-marginedge-products-api/)
+- [MarginEdge Public Categories Restaurant Units API](https://apis.io/collections/marginedge/open-marginedge-restaurant-units-api/)
+- [MarginEdge Public Categories Vendors API](https://apis.io/collections/marginedge/open-marginedge-vendors-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [MarginEdge — jsonschema rules](https://apis.io/rules/marginedge/marginedge-jsonschema-spectral-rules/)
+- [MarginEdge API Rules](https://apis.io/rules/marginedge/marginedge-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Marginedge Authentication](https://apis.io/security/marginedge/marginedge-authentication/)
+- [Marginedge Domain Security](https://apis.io/security/marginedge/marginedge-domain-security/)
+- [Marginedge Trust Center](https://apis.io/security/marginedge/marginedge-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Marginedge Plans Pricing](https://apis.io/plans/marginedge/marginedge-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Marginedge Rate Limits](https://apis.io/rate-limits/marginedge/marginedge-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Marginedge Finops](https://apis.io/finops/marginedge/marginedge-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.marginedge.com/)
 - [Documentation](https://developer.marginedge.com/)
 - [Pricing](https://www.marginedge.com/pricing/)
 - [Support](https://help.marginedge.com/hc/en-us)
 - [Blog](https://www.marginedge.com/blog)
-- [LinkedIn](https://www.linkedin.com/company/marginedge)
-- [Spectral Rules](rules/marginedge-spectral-rules.yml)
-- [Vocabulary](vocabulary/marginedge-vocabulary.yml)
-- [Plans](plans/marginedge-plans-pricing.yml)
-- [Rate Limits](rate-limits/marginedge-rate-limits.yml)
-- [Fin Ops](finops/marginedge-finops.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.0** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 60.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 29.8 |
+| Access clarity | 26.3 |
+
+**Agent readiness 56.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/marginedge/](https://apis.io/providers/marginedge/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for MarginEdge: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/marginedge/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
